@@ -9,13 +9,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="dashboard-body">
-    
-    <!-- Sidebar -->
+
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
     <aside class="sidebar" id="sidebar">
         <div class="side-head">
             <div class="side-logo">
                 <i class="fa-solid fa-graduation-cap"></i>
-                <div><span>Academia<span>Hub</span></span><small>المنصة الأكاديمية</small></div>
+                <div><span>Academia<span>Hub</span></span><small>المنصة الأكاديمية الشاملة</small></div>
             </div>
             <button class="side-toggle" id="sideToggle"><i class="fa-solid fa-bars"></i></button>
         </div>
@@ -27,33 +27,42 @@
             <a href="#" class="side-link active" data-page="home"><i class="fa-solid fa-house"></i> <span>الرئيسية</span></a>
             <a href="#" class="side-link" data-page="orders"><i class="fa-solid fa-list-check"></i> <span>طلباتي</span> <b class="badge" id="ordBadge" style="display:none">0</b></a>
             <a href="#" class="side-link" data-page="messages"><i class="fa-solid fa-comments"></i> <span>المراسلات</span></a>
-            <hr>
+            <div class="side-divider"></div>
+            <div class="side-label">الخدمات الأكاديمية</div>
             <a href="#" class="side-link" data-page="thesis"><i class="fa-solid fa-file-pen"></i> <span>الرسائل الجامعية</span></a>
             <a href="#" class="side-link" data-page="publication"><i class="fa-solid fa-newspaper"></i> <span>النشر العلمي</span></a>
-            <a href="#" class="side-link" data-page="translation"><i class="fa-solid fa-language"></i> <span>الترجمة</span></a>
+            <a href="#" class="side-link" data-page="translation"><i class="fa-solid fa-language"></i> <span>الترجمة الأكاديمية</span></a>
             <a href="#" class="side-link" data-page="statistics"><i class="fa-solid fa-chart-pie"></i> <span>التحليل الإحصائي</span></a>
             <a href="#" class="side-link" data-page="plagiarism"><i class="fa-solid fa-check-double"></i> <span>فحص الاقتباس</span></a>
             <a href="#" class="side-link" data-page="graduation"><i class="fa-solid fa-graduation-cap"></i> <span>مشاريع التخرج</span></a>
-            <hr>
-            <a href="#" class="side-link" data-page="experts"><i class="fa-solid fa-user-tie"></i> <span>الخبراء</span></a>
+            <div class="side-divider"></div>
+            <div class="side-label">المجتمع والمعرفة</div>
+            <a href="#" class="side-link" data-page="experts"><i class="fa-solid fa-user-tie"></i> <span>خبراؤنا</span></a>
             <a href="#" class="side-link" data-page="library"><i class="fa-solid fa-book-open"></i> <span>مكتبة النماذج</span></a>
             <a href="#" class="side-link" data-page="forum"><i class="fa-solid fa-users"></i> <span>المجتمع الأكاديمي</span></a>
-            <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="side-link" style="color:#25D366"><i class="fa-brands fa-whatsapp"></i> <span>تواصل معنا</span></a>
+            <div class="side-divider"></div>
+            <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="side-link wa-link"><i class="fa-brands fa-whatsapp"></i> <span>تواصل معنا واتساب</span></a>
+            <a href="mailto:scottmcnamara316@gmail.com" class="side-link email-link"><i class="fa-solid fa-envelope"></i> <span>راسلنا</span></a>
         </nav>
         <button class="logout-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> <span>تسجيل الخروج</span></button>
     </aside>
 
-    <!-- Main -->
+    <!-- ═══════════════ MAIN ═══════════════ -->
     <main class="main" id="mainContent">
+        
+        <!-- TOPBAR -->
         <header class="topbar">
             <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
             <div class="topbar-center">
                 <div class="topbar-scroll">
                     <span><i class="fa-solid fa-shield-halved"></i> ثقة</span> ✦
                     <span><i class="fa-solid fa-handshake"></i> أمانة</span> ✦
-                    <span><i class="fa-solid fa-lock"></i> سرية</span> ✦
+                    <span><i class="fa-solid fa-lock"></i> سرية تامة</span> ✦
                     <span><i class="fa-solid fa-rocket"></i> إنجاز</span> ✦
-                    <span><i class="fa-solid fa-star"></i> جودة</span> ✦
+                    <span><i class="fa-solid fa-bullseye"></i> دقة</span> ✦
+                    <span><i class="fa-solid fa-star"></i> جودة عالية</span> ✦
+                    <span><i class="fa-solid fa-medal"></i> خبرة</span> ✦
+                    <span><i class="fa-solid fa-clock"></i> التزام</span> ✦
                     <span><i class="fa-solid fa-shield-halved"></i> ثقة</span> ✦
                     <span><i class="fa-solid fa-handshake"></i> أمانة</span>
                 </div>
@@ -64,241 +73,242 @@
                     <span class="bell-dot" style="display:none"></span>
                     <div class="notif-drop" id="notifDrop">
                         <div class="notif-head"><strong>الإشعارات</strong><span>0</span></div>
-                        <div class="notif-body"><p style="text-align:center;color:#94A3B8;padding:20px">لا توجد إشعارات</p></div>
+                        <div class="notif-body"><p class="notif-empty">لا توجد إشعارات حالياً</p></div>
                     </div>
                 </div>
                 <div class="top-avatar" id="topAvatar">ب</div>
             </div>
         </header>
 
+        <!-- PAGE CONTAINER -->
         <div class="page-container" id="pageContainer">
             
-            <!-- HOME -->
+            <!-- ══════════ HOME ══════════ -->
             <div class="page active" id="page-home">
                 <div class="hero">
                     <div>
                         <h2>أهلاً بك، <span id="greetName">باحث</span> 👋</h2>
-                        <p>كيف يمكننا مساعدتك اليوم؟</p>
+                        <p>كيف يمكننا مساعدتك اليوم في رحلتك الأكاديمية؟</p>
                     </div>
                     <div class="hero-nums">
-                        <div><b id="completedNum">0</b><span>مكتمل</span></div>
-                        <div><b id="activeNum">0</b><span>نشط</span></div>
+                        <div><b id="completedNum">0</b><span>مشروع مكتمل</span></div>
+                        <div><b id="activeNum">0</b><span>قيد التنفيذ</span></div>
                     </div>
                 </div>
 
-                <h3 class="sec-title"><i class="fa-solid fa-layer-group"></i> خدماتنا</h3>
+                <h3 class="sec-title"><i class="fa-solid fa-layer-group"></i> خدماتنا المتكاملة</h3>
                 <div class="services-grid">
                     <div class="svc-card" onclick="goTo('thesis')">
-                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=500" alt="رسائل">
-                        <div class="svc-info"><i class="fa-solid fa-file-pen"></i><h4>الرسائل الجامعية</h4></div>
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&q=80" alt="الرسائل الجامعية" loading="lazy">
+                        <div class="svc-badge">الأكثر طلباً</div>
+                        <div class="svc-info"><i class="fa-solid fa-file-pen"></i><div><h4>الرسائل الجامعية</h4><p>ماجستير ودكتوراه</p></div></div>
                     </div>
                     <div class="svc-card" onclick="goTo('publication')">
-                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500" alt="نشر">
-                        <div class="svc-info"><i class="fa-solid fa-newspaper"></i><h4>النشر العلمي</h4></div>
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=600&q=80" alt="النشر العلمي" loading="lazy">
+                        <div class="svc-badge svc-badge-green">Scopus</div>
+                        <div class="svc-info"><i class="fa-solid fa-newspaper"></i><div><h4>النشر العلمي</h4><p>Scopus - ISI - PubMed</p></div></div>
                     </div>
                     <div class="svc-card" onclick="goTo('translation')">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500" alt="ترجمة">
-                        <div class="svc-info"><i class="fa-solid fa-language"></i><h4>الترجمة الأكاديمية</h4></div>
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="الترجمة" loading="lazy">
+                        <div class="svc-info"><i class="fa-solid fa-language"></i><div><h4>الترجمة الأكاديمية</h4><p>عربي ↔ إنجليزي</p></div></div>
                     </div>
                     <div class="svc-card" onclick="goTo('statistics')">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500" alt="إحصاء">
-                        <div class="svc-info"><i class="fa-solid fa-chart-pie"></i><h4>التحليل الإحصائي</h4></div>
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="التحليل الإحصائي" loading="lazy">
+                        <div class="svc-info"><i class="fa-solid fa-chart-pie"></i><div><h4>التحليل الإحصائي</h4><p>SPSS - R - AMOS</p></div></div>
                     </div>
                     <div class="svc-card" onclick="goTo('plagiarism')">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" alt="اقتباس">
-                        <div class="svc-info"><i class="fa-solid fa-check-double"></i><h4>فحص الاقتباس</h4></div>
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80" alt="فحص الاقتباس" loading="lazy">
+                        <div class="svc-badge svc-badge-orange">Turnitin</div>
+                        <div class="svc-info"><i class="fa-solid fa-check-double"></i><div><h4>فحص الاقتباس</h4><p>Turnitin - iThenticate</p></div></div>
                     </div>
                     <div class="svc-card" onclick="goTo('graduation')">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90910b683?w=500" alt="تخرج">
-                        <div class="svc-info"><i class="fa-solid fa-graduation-cap"></i><h4>مشاريع التخرج</h4></div>
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90910b683?w=600&q=80" alt="مشاريع التخرج" loading="lazy">
+                        <div class="svc-info"><i class="fa-solid fa-graduation-cap"></i><div><h4>مشاريع التخرج</h4><p>جميع التخصصات</p></div></div>
                     </div>
                 </div>
 
-                <h3 class="sec-title"><i class="fa-solid fa-microscope"></i> التخصصات</h3>
+                <h3 class="sec-title"><i class="fa-solid fa-microscope"></i> جميع التخصصات والفروع</h3>
                 <div class="specs-grid" id="specsGrid"></div>
             </div>
 
-            <!-- THESIS -->
+            <!-- ══════════ THESIS ══════════ -->
             <div class="page" id="page-thesis">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200')">
-                    <div><i class="fa-solid fa-file-pen"></i><h2>الرسائل الجامعية</h2><p>مساعدة في الماجستير والدكتوراه</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80')">
+                    <div><i class="fa-solid fa-file-pen"></i><h2>خدمات الرسائل الجامعية</h2><p>مساعدة أكاديمية متكاملة لرسائل الماجستير والدكتوراه</p></div>
                 </div>
                 <form class="svc-form" id="thesisForm">
-                    <div class="form-card"><h4>1. معلومات أساسية</h4>
-                        <div class="fg2"><div class="fg"><label>المستوى *</label><select required><option value="">اختر</option><option>ماجستير</option><option>دكتوراه</option></select></div>
-                        <div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
-                        <div class="fg"><label>الجامعة</label><input type="text" placeholder="اسم الجامعة"></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> معلومات أساسية</h4>
+                        <div class="fg2">
+                            <div class="fg"><label>المستوى الدراسي <span class="req">*</span></label><select required><option value="">اختر المستوى...</option><option>ماجستير</option><option>دكتوراه</option><option>دبلوم عالي</option></select></div>
+                            <div class="fg"><label>التخصص الدقيق <span class="req">*</span></label><select required class="spec-select-all"></select></div>
+                        </div>
+                        <div class="fg"><label>الجامعة</label><input type="text" placeholder="اسم الجامعة (اختياري)"></div>
                     </div>
-                    <div class="form-card"><h4>2. مرحلة البحث</h4>
-                        <div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>اختيار موضوع</option><option>خطة بحث</option><option>إطار نظري</option><option>منهجية</option><option>تحليل نتائج</option><option>تدقيق وتنسيق</option></select></div>
-                        <div class="fg"><label>العنوان</label><input type="text" placeholder="عنوان البحث"></div>
-                        <div class="fg"><label>عدد الكلمات</label><input type="number" placeholder="تقريبي"></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> مرحلة البحث</h4>
+                        <div class="fg"><label>في أي مرحلة أنت الآن؟ <span class="req">*</span></label><select required><option value="">اختر المرحلة...</option><option>لم أحدد العنوان بعد - أحتاج مساعدة في اختيار الموضوع</option><option>أحتاج كتابة خطة البحث (Proposal)</option><option>لدي خطة وأحتاج البدء بالفصل الأول</option><option>الإطار النظري ومراجعة الأدبيات</option><option>منهجية البحث</option><option>تحليل النتائج والمناقشة</option><option>أحتاج مساعدة في الرسالة كاملة</option><option>لدي مسودة وأحتاج تدقيق وتنسيق</option></select></div>
+                        <div class="fg"><label>عنوان البحث (إن وجد)</label><input type="text" placeholder="أدخل عنوان البحث المقترح"></div>
+                        <div class="fg"><label>عدد الكلمات المطلوب (تقريبي)</label><input type="number" placeholder="مثال: 20000" min="1000"></div>
                     </div>
-                    <div class="form-card"><h4>3. متطلبات</h4>
-                        <div class="fg"><label>التوثيق</label><select><option>APA 7</option><option>Harvard</option><option>Vancouver</option></select></div>
-                        <div class="fg"><label>المدة</label><select><option>عاجل 7 أيام</option><option selected>عادي 14 يوم</option><option>مرن 30 يوم</option></select></div>
-                        <div class="fg"><label>ملاحظات</label><textarea rows="3" placeholder="تفاصيل إضافية..."></textarea></div>
-                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملفات</p><input type="file" multiple hidden></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> متطلبات إضافية</h4>
+                        <div class="fg2">
+                            <div class="fg"><label>نظام التوثيق</label><select><option>APA 7th Edition</option><option>Harvard</option><option>Vancouver</option><option>Chicago</option></select></div>
+                            <div class="fg"><label>المدة الزمنية</label><select><option>عاجل (7 أيام)</option><option selected>عادي (14 يوم)</option><option>مرن (30 يوم)</option></select></div>
+                        </div>
+                        <div class="fg"><label>وصف إضافي للطلب</label><textarea rows="4" placeholder="اذكر أي تفاصيل إضافية أو متطلبات خاصة..."></textarea></div>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملفات المساعدة</p><span>PDF, Word - يمكنك رفع خطة البحث أو أي مراجع</span><input type="file" multiple accept=".pdf,.docx,.doc" hidden></div>
                     </div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
                 </form>
             </div>
 
-            <!-- PUBLICATION -->
+            <!-- ══════════ PUBLICATION ══════════ -->
             <div class="page" id="page-publication">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200')">
-                    <div><i class="fa-solid fa-newspaper"></i><h2>النشر العلمي</h2><p>مجلات Scopus و ISI</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200&q=80')">
+                    <div><i class="fa-solid fa-newspaper"></i><h2>خدمات النشر العلمي</h2><p>نشر بحثك في مجلات Scopus و ISI المعتمدة</p></div>
                 </div>
                 <div class="journals-bar">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scopus_logo.svg/320px-Scopus_logo.svg.png" alt="Scopus">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Clarivate.svg/320px-Clarivate.svg.png" alt="Clarivate">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/US-NLM-PubMed-Logo.svg/320px-US-NLM-PubMed-Logo.svg.png" alt="PubMed">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/DOI_logo.svg/320px-DOI_logo.svg.png" alt="DOI">
+                    <span class="journals-title">معتمدون لدى:</span>
+                    <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scopus_logo.svg/320px-Scopus_logo.svg.png" alt="Scopus" loading="lazy"><span>Scopus</span></div>
+                    <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Clarivate.svg/320px-Clarivate.svg.png" alt="Clarivate" loading="lazy"><span>Clarivate</span></div>
+                    <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/US-NLM-PubMed-Logo.svg/320px-US-NLM-PubMed-Logo.svg.png" alt="PubMed" loading="lazy"><span>PubMed</span></div>
+                    <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/DOI_logo.svg/320px-DOI_logo.svg.png" alt="DOI" loading="lazy"><span>DOI</span></div>
+                    <div class="journal-logo-box"><img src="https://www.turnitin.com/img/turnitin-logo.svg" alt="Turnitin" loading="lazy"><span>Turnitin</span></div>
+                    <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/320px-ORCID_iD.svg.png" alt="ORCID" loading="lazy"><span>ORCID</span></div>
                 </div>
                 <form class="svc-form" id="pubForm">
-                    <div class="form-card"><h4>1. حالة البحث</h4>
-                        <div class="fg"><label>هل البحث جاهز؟ *</label><select required><option value="">اختر</option><option>نعم جاهز</option><option>مسودة</option><option>فكرة فقط</option><option>أحتاج بحث كامل</option></select></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> حالة البحث</h4>
+                        <div class="fg"><label>هل قمت بكتابة البحث بالفعل؟ <span class="req">*</span></label><select required><option value="">اختر...</option><option>نعم، لدي بحث جاهز وأريد نشره</option><option>لدي مسودة أولية تحتاج تطوير</option><option>لدي فكرة بحث فقط وأحتاج مساعدة في كتابته</option><option>أحتاج مساعدة كاملة من الفكرة حتى النشر</option></select></div>
                     </div>
-                    <div class="form-card"><h4>2. المجلة</h4>
-                        <div class="fg"><label>التصنيف *</label><select required><option value="">اختر</option><option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option><option>أي تصنيف</option></select></div>
-                        <div class="fg"><label>قاعدة البيانات</label><select><option>Scopus</option><option>ISI</option><option>PubMed</option></select></div>
-                        <div class="fg"><label>مجلات محددة</label><input type="text" placeholder="أسماء مجلات إن وجدت"></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> تصنيف المجلة</h4>
+                        <div class="fg"><label>ما تصنيف المجلة التي تستهدفها؟ <span class="req">*</span></label><select required><option value="">اختر التصنيف...</option><option>Q1 - المجلات الأعلى تصنيفاً (أعلى 25%)</option><option>Q2 - مجلات عالية التصنيف (25%-50%)</option><option>Q3 - مجلات متوسطة التصنيف (50%-75%)</option><option>Q4 - مجلات مقبولة التصنيف (أدنى 25%)</option><option>أي تصنيف - المهم النشر</option><option>لا أعرف - أحتاج مساعدتكم في الاختيار</option></select></div>
+                        <div class="fg2"><div class="fg"><label>قاعدة البيانات المستهدفة</label><select><option value="">اختر...</option><option>Scopus</option><option>ISI / Web of Science</option><option>PubMed</option><option>Scopus و ISI معاً</option></select></div>
+                        <div class="fg"><label>هل لديك مجلات محددة؟</label><input type="text" placeholder="اكتب أسماء المجلات إن وجدت"></div></div>
                     </div>
-                    <div class="form-card"><h4>3. خدمات</h4>
-                        <div class="checks"><label><input type="checkbox" checked> اختيار المجلة</label><label><input type="checkbox" checked> تنسيق للقالب</label><label><input type="checkbox"> Cover Letter</label><label><input type="checkbox"> متابعة التحكيم</label><label><input type="checkbox"> ترجمة</label></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> الخدمات المطلوبة</h4>
+                        <div class="checks"><label><input type="checkbox" checked> اختيار المجلة المناسبة</label><label><input type="checkbox" checked> تنسيق البحث حسب قالب المجلة</label><label><input type="checkbox"> كتابة Cover Letter</label><label><input type="checkbox"> متابعة التحكيم والرد على المحكمين</label><label><input type="checkbox"> ترجمة البحث للإنجليزية</label><label><input type="checkbox"> إعادة التقديم في حال الرفض</label></div>
                     </div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
                 </form>
             </div>
 
-            <!-- TRANSLATION -->
+            <!-- ══════════ TRANSLATION ══════════ -->
             <div class="page" id="page-translation">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200')">
-                    <div><i class="fa-solid fa-language"></i><h2>الترجمة الأكاديمية</h2><p>عربي ↔ إنجليزي</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80')">
+                    <div><i class="fa-solid fa-language"></i><h2>خدمات الترجمة الأكاديمية</h2><p>ترجمة احترافية للأبحاث والرسائل العلمية - عربي ↔ إنجليزي</p></div>
                 </div>
                 <form class="svc-form" id="transForm">
-                    <div class="form-card"><h4>1. نوع الترجمة</h4>
-                        <div class="fg"><label>الاتجاه *</label><select required><option value="">اختر</option><option>عربي → إنجليزي</option><option>إنجليزي → عربي</option></select></div>
-                        <div class="fg"><label>المحتوى *</label><select required><option value="">اختر</option><option>ورقة علمية</option><option>رسالة</option><option>خطة بحث</option><option>تقرير</option></select></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> نوع الترجمة</h4>
+                        <div class="fg2"><div class="fg"><label>اتجاه الترجمة <span class="req">*</span></label><select required><option value="">اختر...</option><option>من العربية إلى الإنجليزية</option><option>من الإنجليزية إلى العربية</option><option>ترجمة في الاتجاهين</option></select></div>
+                        <div class="fg"><label>نوع المحتوى <span class="req">*</span></label><select required><option value="">اختر...</option><option>ورقة علمية (Research Paper)</option><option>رسالة ماجستير / دكتوراه</option><option>خطة بحث (Proposal)</option><option>تقرير أكاديمي</option><option>ملخص بحث فقط (Abstract)</option><option>فصل محدد من الرسالة</option></select></div></div>
                     </div>
-                    <div class="form-card"><h4>2. المستوى</h4>
-                        <div class="fg"><label>الخدمة *</label><select required><option value="">اختر</option><option>ترجمة فقط</option><option>ترجمة + تدقيق</option><option>ترجمة + Native</option></select></div>
-                        <div class="fg2"><div class="fg"><label>الكلمات *</label><input type="number" required></div><div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> مستوى الخدمة</h4>
+                        <div class="fg"><label>نوع الخدمة المطلوبة <span class="req">*</span></label><select required><option value="">اختر...</option><option>ترجمة فقط</option><option>ترجمة + تدقيق لغوي</option><option>ترجمة + مراجعة متحدث أصلي (Native Speaker)</option><option>تدقيق لغوي فقط (لدي ترجمة جاهزة)</option></select></div>
+                        <div class="fg2"><div class="fg"><label>عدد الكلمات التقريبي <span class="req">*</span></label><input type="number" placeholder="أدخل عدد الكلمات..." required min="100"></div>
+                        <div class="fg"><label>التخصص العلمي <span class="req">*</span></label><select required class="spec-select-all"></select></div></div>
+                        <div class="fg"><label>المدة المطلوبة</label><select><option>عاجل جداً (3 أيام)</option><option>سريع (7 أيام)</option><option selected>عادي (14 يوم)</option><option>مرن (30 يوم)</option></select></div>
                     </div>
-                    <div class="form-card"><h4>3. ملفات</h4>
-                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف</p><input type="file" hidden></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> الملفات</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف المراد ترجمته</p><span>PDF, Word - الحد الأقصى 25MB</span><input type="file" accept=".pdf,.docx,.doc" hidden></div>
                     </div>
-                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب الترجمة</button>
                 </form>
             </div>
 
-            <!-- STATISTICS -->
+            <!-- ══════════ STATISTICS ══════════ -->
             <div class="page" id="page-statistics">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200')">
-                    <div><i class="fa-solid fa-chart-pie"></i><h2>التحليل الإحصائي</h2><p>SPSS - R - AMOS</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80')">
+                    <div><i class="fa-solid fa-chart-pie"></i><h2>خدمات التحليل الإحصائي</h2><p>تحليل احترافي للبيانات باستخدام SPSS, R, Python, AMOS</p></div>
                 </div>
                 <form class="svc-form" id="statsForm">
-                    <div class="form-card"><h4>1. الدراسة</h4>
-                        <div class="fg"><label>النوع *</label><select required><option value="">اختر</option><option>كمية</option><option>نوعية</option><option>مختلطة</option></select></div>
-                        <div class="fg2"><div class="fg"><label>العينة *</label><input type="number" required></div><div class="fg"><label>البرنامج</label><select><option>SPSS</option><option>R</option><option>AMOS</option><option>SmartPLS</option></select></div></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> معلومات الدراسة</h4>
+                        <div class="fg"><label>نوع الدراسة <span class="req">*</span></label><select required><option value="">اختر...</option><option>دراسة كمية (استبيان / بيانات رقمية)</option><option>دراسة نوعية (مقابلات / تحليل محتوى)</option><option>دراسة مختلطة (كمي + نوعي)</option></select></div>
+                        <div class="fg2"><div class="fg"><label>حجم العينة <span class="req">*</span></label><input type="number" placeholder="عدد المشاركين" required min="10"></div>
+                        <div class="fg"><label>البرنامج الإحصائي المفضل</label><select><option value="">أريد توصيتكم</option><option>SPSS</option><option>R Programming</option><option>Python</option><option>STATA</option><option>AMOS</option><option>SmartPLS</option><option>NVivo (للبيانات النوعية)</option></select></div></div>
                     </div>
-                    <div class="form-card"><h4>2. التحليلات</h4>
-                        <div class="checks"><label><input type="checkbox" checked> وصفي</label><label><input type="checkbox"> T-Test</label><label><input type="checkbox"> ANOVA</label><label><input type="checkbox"> انحدار</label><label><input type="checkbox"> SEM</label></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> التحليلات المطلوبة</h4>
+                        <div class="checks"><label><input type="checkbox" checked> الإحصاء الوصفي</label><label><input type="checkbox"> اختبار T-Test</label><label><input type="checkbox"> تحليل التباين ANOVA</label><label><input type="checkbox"> Chi-Square</label><label><input type="checkbox"> تحليل الارتباط</label><label><input type="checkbox"> تحليل الانحدار</label><label><input type="checkbox"> التحليل العاملي</label><label><input type="checkbox"> نمذجة SEM</label><label><input type="checkbox"> تحليل المسار</label><label><input type="checkbox"> تحليل الثبات</label></div>
                     </div>
-                    <div class="form-card"><h4>3. ملفات</h4>
-                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع البيانات</p><input type="file" hidden></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> الملفات</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع ملف البيانات والاستبيان</p><span>Excel, CSV, SPSS (.sav), PDF</span><input type="file" multiple accept=".xlsx,.csv,.sav,.xls,.pdf" hidden></div>
                     </div>
-                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب التحليل</button>
                 </form>
             </div>
 
-            <!-- PLAGIARISM -->
+            <!-- ══════════ PLAGIARISM ══════════ -->
             <div class="page" id="page-plagiarism">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200')">
-                    <div><i class="fa-solid fa-check-double"></i><h2>فحص الاقتباس</h2><p>Turnitin - iThenticate</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80')">
+                    <div><i class="fa-solid fa-check-double"></i><h2>خدمات فحص الاقتباس</h2><p>فحص دقيق لنسبة الاقتباس باستخدام Turnitin و iThenticate</p></div>
                 </div>
                 <form class="svc-form" id="plagForm">
-                    <div class="form-card"><h4>1. الفحص</h4>
-                        <div class="fg"><label>الأداة *</label><select required><option value="">اختر</option><option>Turnitin</option><option>iThenticate</option></select></div>
-                        <div class="fg"><label>المحتوى *</label><select required><option value="">اختر</option><option>رسالة</option><option>ورقة علمية</option></select></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> نوع الفحص</h4>
+                        <div class="fg2"><div class="fg"><label>أداة الفحص <span class="req">*</span></label><select required><option value="">اختر...</option><option>Turnitin (للرسائل الجامعية)</option><option>iThenticate (للأبحاث العلمية)</option><option>الفحص بكلا الأداتين</option><option>أريد توصيتكم بالأداة المناسبة</option></select></div>
+                        <div class="fg"><label>نوع المحتوى <span class="req">*</span></label><select required><option value="">اختر...</option><option>رسالة ماجستير / دكتوراه</option><option>ورقة علمية للنشر</option><option>خطة بحث</option><option>فصل محدد</option><option>مقال أكاديمي</option></select></div></div>
                     </div>
-                    <div class="form-card"><h4>2. خدمات</h4>
-                        <div class="checks"><label><input type="checkbox" checked> فحص</label><label><input type="checkbox"> إعادة صياغة</label><label><input type="checkbox"> تدقيق مراجع</label></div>
-                        <div class="fg"><label>النسبة المستهدفة</label><select><option>أقل من 5%</option><option selected>أقل من 20%</option></select></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> الخدمات المطلوبة</h4>
+                        <div class="checks"><label><input type="checkbox" checked> فحص نسبة الاقتباس</label><label><input type="checkbox"> إعادة صياغة أكاديمية لتقليل النسبة</label><label><input type="checkbox"> تدقيق الاستشهادات المرجعية</label><label><input type="checkbox"> تنسيق المراجع حسب النظام المطلوب</label><label><input type="checkbox"> تقرير مفصل بنتائج الفحص</label></div>
+                        <div class="fg2" style="margin-top:14px"><div class="fg"><label>نظام التوثيق</label><select><option>APA 7th</option><option>Harvard</option><option>Vancouver</option><option>Chicago</option><option>IEEE</option></select></div>
+                        <div class="fg"><label>النسبة المستهدفة</label><select><option>أقل من 5%</option><option>أقل من 10%</option><option selected>أقل من 20%</option><option>أقل من 25%</option></select></div></div>
                     </div>
-                    <div class="form-card"><h4>3. ملف</h4>
-                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف</p><input type="file" hidden></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> رفع الملف</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف المراد فحصه</p><span>PDF, Word - الحد الأقصى 30MB</span><input type="file" accept=".pdf,.docx,.doc" hidden></div>
                     </div>
-                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب الفحص</button>
                 </form>
             </div>
 
-            <!-- GRADUATION -->
+            <!-- ══════════ GRADUATION ══════════ -->
             <div class="page" id="page-graduation">
-                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910b683?w=1200')">
-                    <div><i class="fa-solid fa-graduation-cap"></i><h2>مشاريع التخرج</h2><p>جميع التخصصات</p></div>
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910b683?w=1200&q=80')">
+                    <div><i class="fa-solid fa-graduation-cap"></i><h2>خدمات مشاريع التخرج</h2><p>مساعدة متكاملة في مشاريع التخرج لجميع التخصصات</p></div>
                 </div>
                 <form class="svc-form" id="gradForm">
-                    <div class="form-card"><h4>1. المشروع</h4>
-                        <div class="fg2"><div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>بكالوريوس</option><option>دبلوم</option></select></div>
-                        <div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
-                        <div class="fg"><label>النوع *</label><select required><option value="">اختر</option><option>بحثي</option><option>برمجي</option><option>تصميم</option></select></div>
+                    <div class="form-card"><h4><span class="step-num">1</span> معلومات المشروع</h4>
+                        <div class="fg2"><div class="fg"><label>المرحلة الدراسية <span class="req">*</span></label><select required><option value="">اختر...</option><option>دبلوم</option><option>بكالوريوس</option><option>دبلوم عالي</option></select></div>
+                        <div class="fg"><label>التخصص <span class="req">*</span></label><select required class="spec-select-all"></select></div></div>
+                        <div class="fg"><label>نوع المشروع <span class="req">*</span></label><select required><option value="">اختر...</option><option>مشروع بحثي</option><option>مشروع برمجي / تطبيق</option><option>مشروع تصميم / معماري</option><option>مشروع تجريبي / معملي</option><option>مشروع مسحي / استبيان</option><option>خطة عمل / دراسة جدوى</option></select></div>
                     </div>
-                    <div class="form-card"><h4>2. المرحلة</h4>
-                        <div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>أحتاج فكرة</option><option>خطة</option><option>تنفيذ</option><option>تقرير</option></select></div>
-                        <div class="fg"><label>الفكرة</label><textarea rows="3" placeholder="صف فكرتك..."></textarea></div>
+                    <div class="form-card"><h4><span class="step-num">2</span> مرحلة المشروع</h4>
+                        <div class="fg"><label>في أي مرحلة أنت؟ <span class="req">*</span></label><select required><option value="">اختر...</option><option>لم أختر الفكرة بعد - أحتاج اقتراح أفكار</option><option>أحتاج كتابة خطة المشروع</option><option>أحتاج مساعدة في تنفيذ المشروع</option><option>لدي مشروع منفذ وأحتاج كتابة التقرير</option><option>أحتاج مساعدة كاملة من الفكرة حتى التقرير</option></select></div>
+                        <div class="fg"><label>فكرة المشروع (إن وجدت)</label><textarea rows="3" placeholder="صف فكرة مشروعك باختصار..."></textarea></div>
                     </div>
-                    <div class="form-card"><h4>3. ملفات</h4>
-                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع ملفات</p><input type="file" multiple hidden></div>
+                    <div class="form-card"><h4><span class="step-num">3</span> متطلبات إضافية</h4>
+                        <div class="fg2"><div class="fg"><label>لغة التقرير</label><select><option>العربية</option><option>الإنجليزية</option></select></div>
+                        <div class="fg"><label>موعد التسليم</label><input type="date"></div></div>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع أي ملفات متعلقة بالمشروع</p><span>متطلبات الجامعة، كود، تصميمات...</span><input type="file" multiple hidden></div>
                     </div>
-                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب المشروع</button>
                 </form>
             </div>
 
-            <!-- ORDERS -->
+            <!-- ══════════ ORDERS ══════════ -->
             <div class="page" id="page-orders">
                 <h3 class="pg-title"><i class="fa-solid fa-list-check"></i> طلباتي</h3>
-                <div class="filter-bar" id="orderFilters">
-                    <button class="f-btn active" data-f="all">الكل</button>
-                    <button class="f-btn" data-f="in-progress">نشطة</button>
-                    <button class="f-btn" data-f="completed">مكتملة</button>
-                </div>
+                <div class="filter-bar"><button class="f-btn active" data-f="all">الكل</button><button class="f-btn" data-f="in-progress">نشطة</button><button class="f-btn" data-f="completed">مكتملة</button></div>
                 <div id="ordersList"></div>
             </div>
 
-            <!-- MESSAGES -->
+            <!-- ══════════ MESSAGES ══════════ -->
             <div class="page" id="page-messages">
                 <h3 class="pg-title"><i class="fa-solid fa-comments"></i> المراسلات</h3>
-                <div class="msg-layout">
-                    <div class="msg-list" id="msgList"></div>
-                    <div class="msg-chat" id="msgChat"><div class="empty"><i class="fa-solid fa-comment-dots"></i><p>اختر محادثة</p></div></div>
-                </div>
+                <div class="msg-layout"><div class="msg-list" id="msgList"></div><div class="msg-chat" id="msgChat"><div class="empty"><i class="fa-solid fa-comment-dots"></i><p>اختر محادثة لعرض المراسلات</p></div></div></div>
             </div>
 
-            <!-- EXPERTS -->
+            <!-- ══════════ EXPERTS ══════════ -->
             <div class="page" id="page-experts">
-                <h3 class="pg-title"><i class="fa-solid fa-user-tie"></i> الخبراء</h3>
-                <div class="exp-search">
-                    <input type="text" placeholder="ابحث..." id="expSearch">
-                    <select id="expFilter"><option value="all">الكل</option><option>الطب</option><option>الهندسة</option><option>العلوم</option><option>اجتماعية</option><option>إنسانية</option><option>إدارة</option><option>قانون</option></select>
-                </div>
+                <h3 class="pg-title"><i class="fa-solid fa-user-tie"></i> خبراؤنا</h3>
+                <div class="exp-search"><input type="text" placeholder="ابحث عن خبير..." id="expSearch"><select id="expFilter"><option value="all">جميع التخصصات</option><option>الطب والعلوم الصحية</option><option>الهندسة</option><option>العلوم الطبيعية</option><option>العلوم الاجتماعية</option><option>العلوم الإنسانية</option><option>الإدارة والاقتصاد</option><option>القانون</option></select></div>
                 <div class="exp-grid" id="expGrid"></div>
             </div>
 
-            <!-- LIBRARY -->
+            <!-- ══════════ LIBRARY ══════════ -->
             <div class="page" id="page-library">
                 <h3 class="pg-title"><i class="fa-solid fa-book-open"></i> مكتبة النماذج</h3>
-                <div class="filter-bar" id="libFilters">
-                    <button class="f-btn active" data-f="all">الكل</button>
-                    <button class="f-btn" data-f="proposal">خطط</button>
-                    <button class="f-btn" data-f="thesis">رسائل</button>
-                    <button class="f-btn" data-f="paper">أوراق</button>
-                    <button class="f-btn" data-f="cover">Cover</button>
-                </div>
+                <div class="filter-bar"><button class="f-btn active" data-f="all">الكل</button><button class="f-btn" data-f="proposal">خطط بحث</button><button class="f-btn" data-f="thesis">رسائل</button><button class="f-btn" data-f="paper">أوراق علمية</button><button class="f-btn" data-f="cover">Cover Letter</button><button class="f-btn" data-f="presentation">عروض</button></div>
                 <div class="lib-grid" id="libGrid"></div>
             </div>
 
-            <!-- FORUM -->
+            <!-- ══════════ FORUM ══════════ -->
             <div class="page" id="page-forum">
                 <h3 class="pg-title"><i class="fa-solid fa-users"></i> المجتمع الأكاديمي</h3>
                 <button class="btn-new"><i class="fa-solid fa-plus"></i> موضوع جديد</button>
@@ -308,20 +318,12 @@
         </div>
     </main>
 
-    <!-- WhatsApp Float -->
-    <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="wa-float">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="wa-float"><i class="fa-brands fa-whatsapp"></i></a>
 
-    <!-- Modal -->
-    <div class="modal" id="modal">
-        <div class="modal-bg"></div>
-        <div class="modal-box">
-            <div class="modal-head"><h4 id="modalTitle">تقييم</h4><button class="modal-x">&times;</button></div>
-            <div class="modal-body" id="modalBody"></div>
-        </div>
-    </div>
+    <!-- MODAL -->
+    <div class="modal" id="modal"><div class="modal-bg"></div><div class="modal-box"><div class="modal-head"><h4 id="modalTitle"></h4><button class="modal-x">&times;</button></div><div class="modal-body" id="modalBody"></div></div></div>
 
     <script src="js/app.js"></script>
 </body>
-</html>
+                                                                              </html>
