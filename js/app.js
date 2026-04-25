@@ -5,34 +5,14 @@
 // ═══════════════ DATA ═══════════════
 
 const SPECS_DATA = {
-    'الطب والعلوم الصحية': {
-        img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80',
-        branches: ['طب بشري', 'طب أسنان', 'صيدلة', 'تمريض', 'صحة عامة', 'علاج طبيعي', 'مختبرات طبية', 'أشعة', 'تخدير', 'طب عيون', 'جراحة عامة', 'طب أطفال', 'أمراض جلدية']
-    },
-    'الهندسة': {
-        img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=80',
-        branches: ['مدنية', 'معمارية', 'كهربائية', 'ميكانيكية', 'برمجيات', 'علوم حاسوب', 'ذكاء اصطناعي', 'أمن سيبراني', 'هندسة بيانات', 'كيميائية', 'نفط', 'طيران']
-    },
-    'العلوم الطبيعية والبحتة': {
-        img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80',
-        branches: ['فيزياء', 'كيمياء', 'أحياء', 'رياضيات', 'إحصاء', 'علوم بيئة', 'جيولوجيا', 'فلك']
-    },
-    'العلوم الاجتماعية': {
-        img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',
-        branches: ['علم اجتماع', 'علم نفس', 'خدمة اجتماعية', 'علوم سياسية', 'إعلام واتصال', 'أنثروبولوجيا']
-    },
-    'العلوم الإنسانية والتربوية': {
-        img: 'https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=400&q=80',
-        branches: ['تاريخ', 'فلسفة', 'أدب عربي', 'أدب إنجليزي', 'لغويات', 'دراسات إسلامية', 'تربية', 'جغرافيا']
-    },
-    'الإدارة والاقتصاد': {
-        img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80',
-        branches: ['إدارة أعمال', 'تسويق', 'محاسبة', 'تمويل', 'اقتصاد', 'نظم معلومات', 'موارد بشرية']
-    },
-    'القانون والأنظمة': {
-        img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=80',
-        branches: ['قانون عام', 'قانون خاص', 'قانون جنائي', 'قانون تجاري', 'قانون دولي', 'أنظمة']
-    }
+    'الطب والعلوم الصحية': { img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80', branches: ['طب بشري','طب أسنان','صيدلة','تمريض','صحة عامة','علاج طبيعي','مختبرات طبية','أشعة','تخدير','تغذية علاجية','إدارة صحية','وبائيات'] },
+    'الهندسة والتقنية': { img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=80', branches: ['هندسة مدنية','هندسة معمارية','هندسة كهربائية','هندسة ميكانيكية','هندسة برمجيات','علوم حاسوب','ذكاء اصطناعي','أمن سيبراني','هندسة بيانات','اتصالات','نفط وغاز','طاقة متجددة'] },
+    'العلوم الطبيعية والبحتة': { img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80', branches: ['فيزياء','كيمياء','أحياء','رياضيات','إحصاء','علوم بيئة','جيولوجيا','تقنية حيوية','علوم المواد'] },
+    'العلوم الاجتماعية': { img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80', branches: ['علم اجتماع','علم نفس','خدمة اجتماعية','علوم سياسية','إعلام واتصال','أنثروبولوجيا','علاقات دولية'] },
+    'العلوم الإنسانية والتربوية': { img: 'https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=400&q=80', branches: ['تاريخ','فلسفة','أدب عربي','أدب إنجليزي','لغويات','دراسات إسلامية','تربية','مناهج وطرق تدريس','جغرافيا'] },
+    'الإدارة والاقتصاد': { img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80', branches: ['إدارة أعمال','تسويق','محاسبة','تمويل','اقتصاد','نظم معلومات إدارية','موارد بشرية','ريادة أعمال'] },
+    'القانون والأنظمة': { img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=80', branches: ['قانون عام','قانون خاص','قانون جنائي','قانون تجاري','قانون دولي','قانون إداري','تحكيم','حقوق الإنسان'] },
+    'الفنون والعمارة والتصميم': { img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=400&q=80', branches: ['تصميم داخلي','تصميم جرافيك','فنون بصرية','تخطيط عمراني','إعلام رقمي','تصميم تجربة المستخدم'] }
 };
 
 const EXPERTS_DATA = [
@@ -43,11 +23,11 @@ const EXPERTS_DATA = [
     { n: 'د. منى العتيبي', s: 'التمريض - عناية مركزة', c: 'الطب والعلوم الصحية', r: 4.6, p: 29, exp: '8 سنوات', b: 'gold', bio: 'ممرضة ممارسة متقدمة، باحثة في جودة الرعاية' },
     { n: 'أ.د. خالد السبيعي', s: 'الصحة العامة - وبائيات', c: 'الطب والعلوم الصحية', r: 4.9, p: 55, exp: '18 سنة', b: 'diamond', bio: 'خبير وبائيات، مستشار منظمة الصحة العالمية سابقاً' },
     // الهندسة (5)
-    { n: 'د. سارة الأحمدي', s: 'الذكاء الاصطناعي وتعلم الآلة', c: 'الهندسة', r: 4.9, p: 48, exp: '11 سنة', b: 'diamond', bio: 'باحثة في التعلم العميق، ناشرة في NeurIPS و ICML' },
-    { n: 'د. عمر الحربي', s: 'الهندسة المدنية - إنشاءات', c: 'الهندسة', r: 4.8, p: 41, exp: '13 سنة', b: 'diamond', bio: 'مهندس استشاري، خبير في تحليل المنشآت' },
-    { n: 'د. ليلى القاسم', s: 'الهندسة الكهربائية - اتصالات', c: 'الهندسة', r: 4.7, p: 35, exp: '9 سنوات', b: 'gold', bio: 'متخصصة في شبكات الجيل الخامس' },
-    { n: 'د. محمد العمري', s: 'الأمن السيبراني', c: 'الهندسة', r: 4.8, p: 52, exp: '14 سنة', b: 'diamond', bio: 'خبير أمن معلومات، حاصل على CISSP و CEH' },
-    { n: 'د. أحمد الشهري', s: 'الهندسة الميكانيكية - طاقة متجددة', c: 'الهندسة', r: 4.7, p: 33, exp: '10 سنوات', b: 'gold', bio: 'باحث في الطاقة الشمسية والأنظمة الحرارية' },
+    { n: 'د. سارة الأحمدي', s: 'الذكاء الاصطناعي وتعلم الآلة', c: 'الهندسة والتقنية', r: 4.9, p: 48, exp: '11 سنة', b: 'diamond', bio: 'باحثة في التعلم العميق، ناشرة في NeurIPS و ICML' },
+    { n: 'د. عمر الحربي', s: 'الهندسة المدنية - إنشاءات', c: 'الهندسة والتقنية', r: 4.8, p: 41, exp: '13 سنة', b: 'diamond', bio: 'مهندس استشاري، خبير في تحليل المنشآت' },
+    { n: 'د. ليلى القاسم', s: 'الهندسة الكهربائية - اتصالات', c: 'الهندسة والتقنية', r: 4.7, p: 35, exp: '9 سنوات', b: 'gold', bio: 'متخصصة في شبكات الجيل الخامس' },
+    { n: 'د. محمد العمري', s: 'الأمن السيبراني', c: 'الهندسة والتقنية', r: 4.8, p: 52, exp: '14 سنة', b: 'diamond', bio: 'خبير أمن معلومات، حاصل على CISSP و CEH' },
+    { n: 'د. أحمد الشهري', s: 'الهندسة الميكانيكية - طاقة متجددة', c: 'الهندسة والتقنية', r: 4.7, p: 33, exp: '10 سنوات', b: 'gold', bio: 'باحث في الطاقة الشمسية والأنظمة الحرارية' },
     // العلوم (4)
     { n: 'د. محمد القحطاني', s: 'الإحصاء وتحليل البيانات', c: 'العلوم الطبيعية والبحتة', r: 4.8, p: 58, exp: '16 سنة', b: 'diamond', bio: 'إحصائي محترف، خبير في SPSS و R و Python' },
     { n: 'د. عبير الرشيدي', s: 'الكيمياء التحليلية', c: 'العلوم الطبيعية والبحتة', r: 4.6, p: 24, exp: '7 سنوات', b: 'silver', bio: 'كيميائية متخصصة في التحليل الآلي' },
@@ -100,6 +80,36 @@ const FORUM_DATA = [
     { n: 'قصص نجاح الباحثين', d: 'شارك قصة نجاحك الأكاديمي وألهم الآخرين', t: 45, r: 280, clr: '#EC4899', icon: 'fa-trophy' }
 ];
 
+
+const JOURNAL_PORTALS = [
+    { country: 'الجزائر', name: 'بوابة المجلات العلمية الجزائرية ASJP', url: 'https://www.asjp.cerist.dz', icon: 'fa-landmark' },
+    { country: 'العراق', name: 'المجلات الأكاديمية العراقية IASJ', url: 'https://iasj.net', icon: 'fa-book-journal-whills' },
+    { country: 'ليبيا', name: 'بوابة المجلات العلمية الليبية', url: 'https://journals.uob.edu.ly', icon: 'fa-book-open-reader' },
+    { country: 'الأردن', name: 'المجلات العلمية الأردنية', url: 'https://journals.ju.edu.jo', icon: 'fa-scroll' },
+    { country: 'المغرب', name: 'بوابات المجلات المغربية IMIST', url: 'https://revues.imist.ma', icon: 'fa-atlas' }
+];
+
+const PUBLICATION_EXTRAS = [
+    'تقييم ملاءمة المجلة وفحص نطاقها قبل الإرسال',
+    'مطابقة قالب المجلة وتعليمات المؤلفين',
+    'إعداد خطاب التغطية Cover Letter',
+    'إدارة الرد على المحكمين Reviewer Response',
+    'فحص الاقتباس والتشابه قبل التقديم',
+    'اقتراح مجلات محلية وإقليمية مناسبة حسب الدولة والتخصص'
+];
+
+function imgFallback(img, label) {
+    const box = img.closest('.journal-logo-box') || img.parentElement;
+    if (!box) return;
+    img.style.display = 'none';
+    if (!box.querySelector('.logo-fallback')) {
+        const fallback = document.createElement('strong');
+        fallback.className = 'logo-fallback';
+        fallback.textContent = (label || img.alt || 'مجلة').slice(0, 3);
+        box.prepend(fallback);
+    }
+}
+
 // ═══════════════ STATE ═══════════════
 const ST = {
     user: null,
@@ -119,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
     fillAllSpecSelects();
     loadSpecsGrid();
     loadHomeStats();
+    renderJournalPortals();
+    initLogoFallbacks();
     initAllForms();
     initFileUploads();
     initModal();
@@ -326,16 +338,45 @@ function loadSpecsGrid() {
 
 // ═══════════════ FILL SPECIALIZATION SELECTS ═══════════════
 function fillAllSpecSelects() {
-    document.querySelectorAll('.spec-select-all').forEach(sel => {
-        if (sel.options.length > 1) return;
+    const selects = document.querySelectorAll('.spec-select-all');
+    selects.forEach(sel => {
         sel.innerHTML = '<option value="">اختر التخصص الدقيق...</option>';
         Object.entries(SPECS_DATA).forEach(([k, v]) => {
             const og = document.createElement('optgroup');
             og.label = k;
-            v.branches.forEach(b => { og.innerHTML += `<option value="${b}">${b}</option>`; });
+            v.branches.forEach(b => {
+                const opt = document.createElement('option');
+                opt.value = k + ' - ' + b;
+                opt.textContent = b;
+                og.appendChild(opt);
+            });
             sel.appendChild(og);
         });
     });
+}
+
+function initLogoFallbacks() {
+    document.querySelectorAll('.journal-logo-box img').forEach(img => {
+        img.addEventListener('error', () => imgFallback(img, img.alt));
+    });
+}
+
+function renderJournalPortals() {
+    const grid = document.getElementById('regionalJournalsGrid');
+    if (grid) {
+        grid.innerHTML = JOURNAL_PORTALS.map(p => `
+            <a class="portal-card" href="${p.url}" target="_blank" rel="noopener">
+                <i class="fa-solid ${p.icon}"></i>
+                <b>${p.country}</b>
+                <span>${p.name}</span>
+                <small>فتح البوابة <i class="fa-solid fa-arrow-up-right-from-square"></i></small>
+            </a>
+        `).join('');
+    }
+    const extras = document.getElementById('publicationExtras');
+    if (extras) {
+        extras.innerHTML = PUBLICATION_EXTRAS.map(x => `<li><i class="fa-solid fa-circle-check"></i>${x}</li>`).join('');
+    }
 }
 
 // ═══════════════ FORMS ═══════════════
