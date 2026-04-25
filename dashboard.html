@@ -125,6 +125,26 @@
                         <img src="https://images.unsplash.com/photo-1523050854058-8df90910b683?w=600&q=80" alt="مشاريع التخرج" loading="lazy">
                         <div class="svc-info"><i class="fa-solid fa-graduation-cap"></i><div><h4>مشاريع التخرج</h4><p>جميع التخصصات</p></div></div>
                     </div>
+                    <div class="svc-card" onclick="goTo('publication')">
+                        <img src="https://images.unsplash.com/photo-1495020689067-958852a7765e?w=600&q=80" alt="بوابات المجلات المحلية" loading="lazy">
+                        <div class="svc-badge svc-badge-green">محلي وإقليمي</div>
+                        <div class="svc-info"><i class="fa-solid fa-globe"></i><div><h4>بوابات المجلات العربية</h4><p>الجزائر، العراق، ليبيا، الأردن، المغرب</p></div></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('library')">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80" alt="نماذج أكاديمية" loading="lazy">
+                        <div class="svc-info"><i class="fa-solid fa-file-lines"></i><div><h4>نماذج وأدوات جاهزة</h4><p>قوالب، خطط، ردود محكمين</p></div></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('experts')">
+                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="استشارة بحثية" loading="lazy">
+                        <div class="svc-info"><i class="fa-solid fa-user-check"></i><div><h4>استشارة بحثية سريعة</h4><p>اختيار موضوع، منهجية، خطة نشر</p></div></div>
+                    </div>
+                </div>
+
+                <div class="value-strip">
+                    <div><i class="fa-solid fa-user-shield"></i><b>خصوصية كاملة</b><span>حماية بيانات الطالب والباحث</span></div>
+                    <div><i class="fa-solid fa-clipboard-check"></i><b>مراجعة منهجية</b><span>تدقيق الخطة، المنهج، والأدوات</span></div>
+                    <div><i class="fa-solid fa-language"></i><b>صياغة أكاديمية</b><span>لغة علمية عربية وإنجليزية</span></div>
+                    <div><i class="fa-solid fa-chart-line"></i><b>متابعة الطلب</b><span>حالة كل خدمة داخل لوحة التحكم</span></div>
                 </div>
 
                 <h3 class="sec-title"><i class="fa-solid fa-microscope"></i> جميع التخصصات والفروع</h3>
@@ -175,6 +195,12 @@
                     <div class="journal-logo-box"><img src="https://www.turnitin.com/img/turnitin-logo.svg" alt="Turnitin" loading="lazy"><span>Turnitin</span></div>
                     <div class="journal-logo-box"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/320px-ORCID_iD.svg.png" alt="ORCID" loading="lazy"><span>ORCID</span></div>
                 </div>
+                <div class="form-card regional-card">
+                    <h4><span class="step-num">+</span> بوابات المجلات العربية والمحلية</h4>
+                    <p class="muted-line">أضيفت روابط مباشرة لبوابات المجلات الجزائرية والعراقية والليبية والأردنية والمغربية لتسهيل اختيار مجلة محلية أو إقليمية مناسبة.</p>
+                    <div class="regional-grid" id="regionalJournalsGrid"></div>
+                    <ul class="publication-extras" id="publicationExtras"></ul>
+                </div>
                 <form class="svc-form" id="pubForm">
                     <div class="form-card"><h4><span class="step-num">1</span> حالة البحث</h4>
                         <div class="fg"><label>هل قمت بكتابة البحث بالفعل؟ <span class="req">*</span></label><select required><option value="">اختر...</option><option>نعم، لدي بحث جاهز وأريد نشره</option><option>لدي مسودة أولية تحتاج تطوير</option><option>لدي فكرة بحث فقط وأحتاج مساعدة في كتابته</option><option>أحتاج مساعدة كاملة من الفكرة حتى النشر</option></select></div>
@@ -183,6 +209,7 @@
                         <div class="fg"><label>ما تصنيف المجلة التي تستهدفها؟ <span class="req">*</span></label><select required><option value="">اختر التصنيف...</option><option>Q1 - المجلات الأعلى تصنيفاً (أعلى 25%)</option><option>Q2 - مجلات عالية التصنيف (25%-50%)</option><option>Q3 - مجلات متوسطة التصنيف (50%-75%)</option><option>Q4 - مجلات مقبولة التصنيف (أدنى 25%)</option><option>أي تصنيف - المهم النشر</option><option>لا أعرف - أحتاج مساعدتكم في الاختيار</option></select></div>
                         <div class="fg2"><div class="fg"><label>قاعدة البيانات المستهدفة</label><select><option value="">اختر...</option><option>Scopus</option><option>ISI / Web of Science</option><option>PubMed</option><option>Scopus و ISI معاً</option></select></div>
                         <div class="fg"><label>هل لديك مجلات محددة؟</label><input type="text" placeholder="اكتب أسماء المجلات إن وجدت"></div></div>
+                        <div class="fg"><label>بوابة أو دولة النشر المحلية</label><select><option value="">اختر عند الحاجة...</option><option>بوابة المجلات العلمية الجزائرية ASJP</option><option>المجلات الأكاديمية العراقية IASJ</option><option>المجلات الليبية المحلية</option><option>المجلات الأردنية المحلية</option><option>المجلات المغربية IMIST</option><option>لا يوجد تفضيل محدد</option></select></div>
                     </div>
                     <div class="form-card"><h4><span class="step-num">3</span> الخدمات المطلوبة</h4>
                         <div class="checks"><label><input type="checkbox" checked> اختيار المجلة المناسبة</label><label><input type="checkbox" checked> تنسيق البحث حسب قالب المجلة</label><label><input type="checkbox"> كتابة Cover Letter</label><label><input type="checkbox"> متابعة التحكيم والرد على المحكمين</label><label><input type="checkbox"> ترجمة البحث للإنجليزية</label><label><input type="checkbox"> إعادة التقديم في حال الرفض</label></div>
