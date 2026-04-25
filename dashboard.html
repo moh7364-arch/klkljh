@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademiaHub | لوحة التحكم</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=El+Messiri:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dashboard-body">
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="side-head">
+            <div class="side-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <div><span>Academia<span>Hub</span></span><small>المنصة الأكاديمية</small></div>
+            </div>
+            <button class="side-toggle" id="sideToggle"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <div class="side-user" id="sideUser">
+            <div class="side-avatar" id="sideAvatar">ب</div>
+            <div><strong id="sideName">باحث</strong><small id="sideRole">باحث</small></div>
+        </div>
+        <nav class="side-nav">
+            <a href="#" class="side-link active" data-page="home"><i class="fa-solid fa-house"></i> <span>الرئيسية</span></a>
+            <a href="#" class="side-link" data-page="orders"><i class="fa-solid fa-list-check"></i> <span>طلباتي</span> <b class="badge" id="ordBadge" style="display:none">0</b></a>
+            <a href="#" class="side-link" data-page="messages"><i class="fa-solid fa-comments"></i> <span>المراسلات</span></a>
+            <hr>
+            <a href="#" class="side-link" data-page="thesis"><i class="fa-solid fa-file-pen"></i> <span>الرسائل الجامعية</span></a>
+            <a href="#" class="side-link" data-page="publication"><i class="fa-solid fa-newspaper"></i> <span>النشر العلمي</span></a>
+            <a href="#" class="side-link" data-page="translation"><i class="fa-solid fa-language"></i> <span>الترجمة</span></a>
+            <a href="#" class="side-link" data-page="statistics"><i class="fa-solid fa-chart-pie"></i> <span>التحليل الإحصائي</span></a>
+            <a href="#" class="side-link" data-page="plagiarism"><i class="fa-solid fa-check-double"></i> <span>فحص الاقتباس</span></a>
+            <a href="#" class="side-link" data-page="graduation"><i class="fa-solid fa-graduation-cap"></i> <span>مشاريع التخرج</span></a>
+            <hr>
+            <a href="#" class="side-link" data-page="experts"><i class="fa-solid fa-user-tie"></i> <span>الخبراء</span></a>
+            <a href="#" class="side-link" data-page="library"><i class="fa-solid fa-book-open"></i> <span>مكتبة النماذج</span></a>
+            <a href="#" class="side-link" data-page="forum"><i class="fa-solid fa-users"></i> <span>المجتمع الأكاديمي</span></a>
+            <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="side-link" style="color:#25D366"><i class="fa-brands fa-whatsapp"></i> <span>تواصل معنا</span></a>
+        </nav>
+        <button class="logout-btn" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> <span>تسجيل الخروج</span></button>
+    </aside>
+
+    <!-- Main -->
+    <main class="main" id="mainContent">
+        <header class="topbar">
+            <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+            <div class="topbar-center">
+                <div class="topbar-scroll">
+                    <span><i class="fa-solid fa-shield-halved"></i> ثقة</span> ✦
+                    <span><i class="fa-solid fa-handshake"></i> أمانة</span> ✦
+                    <span><i class="fa-solid fa-lock"></i> سرية</span> ✦
+                    <span><i class="fa-solid fa-rocket"></i> إنجاز</span> ✦
+                    <span><i class="fa-solid fa-star"></i> جودة</span> ✦
+                    <span><i class="fa-solid fa-shield-halved"></i> ثقة</span> ✦
+                    <span><i class="fa-solid fa-handshake"></i> أمانة</span>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="notif-bell" id="notifBell">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="bell-dot" style="display:none"></span>
+                    <div class="notif-drop" id="notifDrop">
+                        <div class="notif-head"><strong>الإشعارات</strong><span>0</span></div>
+                        <div class="notif-body"><p style="text-align:center;color:#94A3B8;padding:20px">لا توجد إشعارات</p></div>
+                    </div>
+                </div>
+                <div class="top-avatar" id="topAvatar">ب</div>
+            </div>
+        </header>
+
+        <div class="page-container" id="pageContainer">
+            
+            <!-- HOME -->
+            <div class="page active" id="page-home">
+                <div class="hero">
+                    <div>
+                        <h2>أهلاً بك، <span id="greetName">باحث</span> 👋</h2>
+                        <p>كيف يمكننا مساعدتك اليوم؟</p>
+                    </div>
+                    <div class="hero-nums">
+                        <div><b id="completedNum">0</b><span>مكتمل</span></div>
+                        <div><b id="activeNum">0</b><span>نشط</span></div>
+                    </div>
+                </div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-layer-group"></i> خدماتنا</h3>
+                <div class="services-grid">
+                    <div class="svc-card" onclick="goTo('thesis')">
+                        <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=500" alt="رسائل">
+                        <div class="svc-info"><i class="fa-solid fa-file-pen"></i><h4>الرسائل الجامعية</h4></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('publication')">
+                        <img src="https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=500" alt="نشر">
+                        <div class="svc-info"><i class="fa-solid fa-newspaper"></i><h4>النشر العلمي</h4></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('translation')">
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=500" alt="ترجمة">
+                        <div class="svc-info"><i class="fa-solid fa-language"></i><h4>الترجمة الأكاديمية</h4></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('statistics')">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500" alt="إحصاء">
+                        <div class="svc-info"><i class="fa-solid fa-chart-pie"></i><h4>التحليل الإحصائي</h4></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('plagiarism')">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=500" alt="اقتباس">
+                        <div class="svc-info"><i class="fa-solid fa-check-double"></i><h4>فحص الاقتباس</h4></div>
+                    </div>
+                    <div class="svc-card" onclick="goTo('graduation')">
+                        <img src="https://images.unsplash.com/photo-1523050854058-8df90910b683?w=500" alt="تخرج">
+                        <div class="svc-info"><i class="fa-solid fa-graduation-cap"></i><h4>مشاريع التخرج</h4></div>
+                    </div>
+                </div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-microscope"></i> التخصصات</h3>
+                <div class="specs-grid" id="specsGrid"></div>
+            </div>
+
+            <!-- THESIS -->
+            <div class="page" id="page-thesis">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200')">
+                    <div><i class="fa-solid fa-file-pen"></i><h2>الرسائل الجامعية</h2><p>مساعدة في الماجستير والدكتوراه</p></div>
+                </div>
+                <form class="svc-form" id="thesisForm">
+                    <div class="form-card"><h4>1. معلومات أساسية</h4>
+                        <div class="fg2"><div class="fg"><label>المستوى *</label><select required><option value="">اختر</option><option>ماجستير</option><option>دكتوراه</option></select></div>
+                        <div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
+                        <div class="fg"><label>الجامعة</label><input type="text" placeholder="اسم الجامعة"></div>
+                    </div>
+                    <div class="form-card"><h4>2. مرحلة البحث</h4>
+                        <div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>اختيار موضوع</option><option>خطة بحث</option><option>إطار نظري</option><option>منهجية</option><option>تحليل نتائج</option><option>تدقيق وتنسيق</option></select></div>
+                        <div class="fg"><label>العنوان</label><input type="text" placeholder="عنوان البحث"></div>
+                        <div class="fg"><label>عدد الكلمات</label><input type="number" placeholder="تقريبي"></div>
+                    </div>
+                    <div class="form-card"><h4>3. متطلبات</h4>
+                        <div class="fg"><label>التوثيق</label><select><option>APA 7</option><option>Harvard</option><option>Vancouver</option></select></div>
+                        <div class="fg"><label>المدة</label><select><option>عاجل 7 أيام</option><option selected>عادي 14 يوم</option><option>مرن 30 يوم</option></select></div>
+                        <div class="fg"><label>ملاحظات</label><textarea rows="3" placeholder="تفاصيل إضافية..."></textarea></div>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملفات</p><input type="file" multiple hidden></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- PUBLICATION -->
+            <div class="page" id="page-publication">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?w=1200')">
+                    <div><i class="fa-solid fa-newspaper"></i><h2>النشر العلمي</h2><p>مجلات Scopus و ISI</p></div>
+                </div>
+                <div class="journals-bar">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Scopus_logo.svg/320px-Scopus_logo.svg.png" alt="Scopus">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Clarivate.svg/320px-Clarivate.svg.png" alt="Clarivate">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/US-NLM-PubMed-Logo.svg/320px-US-NLM-PubMed-Logo.svg.png" alt="PubMed">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/DOI_logo.svg/320px-DOI_logo.svg.png" alt="DOI">
+                </div>
+                <form class="svc-form" id="pubForm">
+                    <div class="form-card"><h4>1. حالة البحث</h4>
+                        <div class="fg"><label>هل البحث جاهز؟ *</label><select required><option value="">اختر</option><option>نعم جاهز</option><option>مسودة</option><option>فكرة فقط</option><option>أحتاج بحث كامل</option></select></div>
+                    </div>
+                    <div class="form-card"><h4>2. المجلة</h4>
+                        <div class="fg"><label>التصنيف *</label><select required><option value="">اختر</option><option>Q1</option><option>Q2</option><option>Q3</option><option>Q4</option><option>أي تصنيف</option></select></div>
+                        <div class="fg"><label>قاعدة البيانات</label><select><option>Scopus</option><option>ISI</option><option>PubMed</option></select></div>
+                        <div class="fg"><label>مجلات محددة</label><input type="text" placeholder="أسماء مجلات إن وجدت"></div>
+                    </div>
+                    <div class="form-card"><h4>3. خدمات</h4>
+                        <div class="checks"><label><input type="checkbox" checked> اختيار المجلة</label><label><input type="checkbox" checked> تنسيق للقالب</label><label><input type="checkbox"> Cover Letter</label><label><input type="checkbox"> متابعة التحكيم</label><label><input type="checkbox"> ترجمة</label></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- TRANSLATION -->
+            <div class="page" id="page-translation">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200')">
+                    <div><i class="fa-solid fa-language"></i><h2>الترجمة الأكاديمية</h2><p>عربي ↔ إنجليزي</p></div>
+                </div>
+                <form class="svc-form" id="transForm">
+                    <div class="form-card"><h4>1. نوع الترجمة</h4>
+                        <div class="fg"><label>الاتجاه *</label><select required><option value="">اختر</option><option>عربي → إنجليزي</option><option>إنجليزي → عربي</option></select></div>
+                        <div class="fg"><label>المحتوى *</label><select required><option value="">اختر</option><option>ورقة علمية</option><option>رسالة</option><option>خطة بحث</option><option>تقرير</option></select></div>
+                    </div>
+                    <div class="form-card"><h4>2. المستوى</h4>
+                        <div class="fg"><label>الخدمة *</label><select required><option value="">اختر</option><option>ترجمة فقط</option><option>ترجمة + تدقيق</option><option>ترجمة + Native</option></select></div>
+                        <div class="fg2"><div class="fg"><label>الكلمات *</label><input type="number" required></div><div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
+                    </div>
+                    <div class="form-card"><h4>3. ملفات</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف</p><input type="file" hidden></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- STATISTICS -->
+            <div class="page" id="page-statistics">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200')">
+                    <div><i class="fa-solid fa-chart-pie"></i><h2>التحليل الإحصائي</h2><p>SPSS - R - AMOS</p></div>
+                </div>
+                <form class="svc-form" id="statsForm">
+                    <div class="form-card"><h4>1. الدراسة</h4>
+                        <div class="fg"><label>النوع *</label><select required><option value="">اختر</option><option>كمية</option><option>نوعية</option><option>مختلطة</option></select></div>
+                        <div class="fg2"><div class="fg"><label>العينة *</label><input type="number" required></div><div class="fg"><label>البرنامج</label><select><option>SPSS</option><option>R</option><option>AMOS</option><option>SmartPLS</option></select></div></div>
+                    </div>
+                    <div class="form-card"><h4>2. التحليلات</h4>
+                        <div class="checks"><label><input type="checkbox" checked> وصفي</label><label><input type="checkbox"> T-Test</label><label><input type="checkbox"> ANOVA</label><label><input type="checkbox"> انحدار</label><label><input type="checkbox"> SEM</label></div>
+                    </div>
+                    <div class="form-card"><h4>3. ملفات</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع البيانات</p><input type="file" hidden></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- PLAGIARISM -->
+            <div class="page" id="page-plagiarism">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200')">
+                    <div><i class="fa-solid fa-check-double"></i><h2>فحص الاقتباس</h2><p>Turnitin - iThenticate</p></div>
+                </div>
+                <form class="svc-form" id="plagForm">
+                    <div class="form-card"><h4>1. الفحص</h4>
+                        <div class="fg"><label>الأداة *</label><select required><option value="">اختر</option><option>Turnitin</option><option>iThenticate</option></select></div>
+                        <div class="fg"><label>المحتوى *</label><select required><option value="">اختر</option><option>رسالة</option><option>ورقة علمية</option></select></div>
+                    </div>
+                    <div class="form-card"><h4>2. خدمات</h4>
+                        <div class="checks"><label><input type="checkbox" checked> فحص</label><label><input type="checkbox"> إعادة صياغة</label><label><input type="checkbox"> تدقيق مراجع</label></div>
+                        <div class="fg"><label>النسبة المستهدفة</label><select><option>أقل من 5%</option><option selected>أقل من 20%</option></select></div>
+                    </div>
+                    <div class="form-card"><h4>3. ملف</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف</p><input type="file" hidden></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- GRADUATION -->
+            <div class="page" id="page-graduation">
+                <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910b683?w=1200')">
+                    <div><i class="fa-solid fa-graduation-cap"></i><h2>مشاريع التخرج</h2><p>جميع التخصصات</p></div>
+                </div>
+                <form class="svc-form" id="gradForm">
+                    <div class="form-card"><h4>1. المشروع</h4>
+                        <div class="fg2"><div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>بكالوريوس</option><option>دبلوم</option></select></div>
+                        <div class="fg"><label>التخصص *</label><select required class="spec-select"></select></div></div>
+                        <div class="fg"><label>النوع *</label><select required><option value="">اختر</option><option>بحثي</option><option>برمجي</option><option>تصميم</option></select></div>
+                    </div>
+                    <div class="form-card"><h4>2. المرحلة</h4>
+                        <div class="fg"><label>المرحلة *</label><select required><option value="">اختر</option><option>أحتاج فكرة</option><option>خطة</option><option>تنفيذ</option><option>تقرير</option></select></div>
+                        <div class="fg"><label>الفكرة</label><textarea rows="3" placeholder="صف فكرتك..."></textarea></div>
+                    </div>
+                    <div class="form-card"><h4>3. ملفات</h4>
+                        <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع ملفات</p><input type="file" multiple hidden></div>
+                    </div>
+                    <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
+                </form>
+            </div>
+
+            <!-- ORDERS -->
+            <div class="page" id="page-orders">
+                <h3 class="pg-title"><i class="fa-solid fa-list-check"></i> طلباتي</h3>
+                <div class="filter-bar" id="orderFilters">
+                    <button class="f-btn active" data-f="all">الكل</button>
+                    <button class="f-btn" data-f="in-progress">نشطة</button>
+                    <button class="f-btn" data-f="completed">مكتملة</button>
+                </div>
+                <div id="ordersList"></div>
+            </div>
+
+            <!-- MESSAGES -->
+            <div class="page" id="page-messages">
+                <h3 class="pg-title"><i class="fa-solid fa-comments"></i> المراسلات</h3>
+                <div class="msg-layout">
+                    <div class="msg-list" id="msgList"></div>
+                    <div class="msg-chat" id="msgChat"><div class="empty"><i class="fa-solid fa-comment-dots"></i><p>اختر محادثة</p></div></div>
+                </div>
+            </div>
+
+            <!-- EXPERTS -->
+            <div class="page" id="page-experts">
+                <h3 class="pg-title"><i class="fa-solid fa-user-tie"></i> الخبراء</h3>
+                <div class="exp-search">
+                    <input type="text" placeholder="ابحث..." id="expSearch">
+                    <select id="expFilter"><option value="all">الكل</option><option>الطب</option><option>الهندسة</option><option>العلوم</option><option>اجتماعية</option><option>إنسانية</option><option>إدارة</option><option>قانون</option></select>
+                </div>
+                <div class="exp-grid" id="expGrid"></div>
+            </div>
+
+            <!-- LIBRARY -->
+            <div class="page" id="page-library">
+                <h3 class="pg-title"><i class="fa-solid fa-book-open"></i> مكتبة النماذج</h3>
+                <div class="filter-bar" id="libFilters">
+                    <button class="f-btn active" data-f="all">الكل</button>
+                    <button class="f-btn" data-f="proposal">خطط</button>
+                    <button class="f-btn" data-f="thesis">رسائل</button>
+                    <button class="f-btn" data-f="paper">أوراق</button>
+                    <button class="f-btn" data-f="cover">Cover</button>
+                </div>
+                <div class="lib-grid" id="libGrid"></div>
+            </div>
+
+            <!-- FORUM -->
+            <div class="page" id="page-forum">
+                <h3 class="pg-title"><i class="fa-solid fa-users"></i> المجتمع الأكاديمي</h3>
+                <button class="btn-new"><i class="fa-solid fa-plus"></i> موضوع جديد</button>
+                <div class="forum-grid" id="forumGrid"></div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- WhatsApp Float -->
+    <a href="https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t" target="_blank" class="wa-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-bg"></div>
+        <div class="modal-box">
+            <div class="modal-head"><h4 id="modalTitle">تقييم</h4><button class="modal-x">&times;</button></div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
