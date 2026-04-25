@@ -1,419 +1,579 @@
 /* ══════════════════════════════════════
-   AcademiaHub - Complete App Logic
+   AcademiaHub - Complete App Logic v2.0
    ══════════════════════════════════════ */
 
-// ═══════ البيانات ═══════
-const SPECS = {
-    'الطب والعلوم الصحية': { img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=300', branches:['طب بشري','طب أسنان','صيدلة','تمريض','صحة عامة','علاج طبيعي'] },
-    'الهندسة': { img:'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=300', branches:['مدنية','كهربائية','ميكانيكية','برمجيات','ذكاء اصطناعي','أمن سيبراني'] },
-    'العلوم': { img:'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=300', branches:['فيزياء','كيمياء','أحياء','رياضيات','إحصاء'] },
-    'الاجتماعية': { img:'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=300', branches:['علم اجتماع','علم نفس','علوم سياسية','إعلام'] },
-    'الإنسانية': { img:'https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=300', branches:['تاريخ','فلسفة','أدب عربي','لغويات','دراسات إسلامية'] },
-    'الإدارة': { img:'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=300', branches:['إدارة أعمال','تسويق','محاسبة','تمويل','اقتصاد'] },
-    'القانون': { img:'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=300', branches:['قانون عام','قانون خاص','قانون جنائي','قانون تجاري'] }
+// ═══════════════ DATA ═══════════════
+
+const SPECS_DATA = {
+    'الطب والعلوم الصحية': {
+        img: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&q=80',
+        branches: ['طب بشري', 'طب أسنان', 'صيدلة', 'تمريض', 'صحة عامة', 'علاج طبيعي', 'مختبرات طبية', 'أشعة', 'تخدير', 'طب عيون', 'جراحة عامة', 'طب أطفال', 'أمراض جلدية']
+    },
+    'الهندسة': {
+        img: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=80',
+        branches: ['مدنية', 'معمارية', 'كهربائية', 'ميكانيكية', 'برمجيات', 'علوم حاسوب', 'ذكاء اصطناعي', 'أمن سيبراني', 'هندسة بيانات', 'كيميائية', 'نفط', 'طيران']
+    },
+    'العلوم الطبيعية والبحتة': {
+        img: 'https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&q=80',
+        branches: ['فيزياء', 'كيمياء', 'أحياء', 'رياضيات', 'إحصاء', 'علوم بيئة', 'جيولوجيا', 'فلك']
+    },
+    'العلوم الاجتماعية': {
+        img: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&q=80',
+        branches: ['علم اجتماع', 'علم نفس', 'خدمة اجتماعية', 'علوم سياسية', 'إعلام واتصال', 'أنثروبولوجيا']
+    },
+    'العلوم الإنسانية والتربوية': {
+        img: 'https://images.unsplash.com/photo-1491841573634-28140fc7ced7?w=400&q=80',
+        branches: ['تاريخ', 'فلسفة', 'أدب عربي', 'أدب إنجليزي', 'لغويات', 'دراسات إسلامية', 'تربية', 'جغرافيا']
+    },
+    'الإدارة والاقتصاد': {
+        img: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80',
+        branches: ['إدارة أعمال', 'تسويق', 'محاسبة', 'تمويل', 'اقتصاد', 'نظم معلومات', 'موارد بشرية']
+    },
+    'القانون والأنظمة': {
+        img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&q=80',
+        branches: ['قانون عام', 'قانون خاص', 'قانون جنائي', 'قانون تجاري', 'قانون دولي', 'أنظمة']
+    }
 };
 
-const EXPERTS = [
-    {n:'د. سارة الأحمدي',s:'الذكاء الاصطناعي',c:'الهندسة',r:4.9,p:48,b:'diamond'},
-    {n:'د. عبدالرحمن القحطاني',s:'الطب الباطني',c:'الطب',r:4.9,p:62,b:'diamond'},
-    {n:'د. محمد القحطاني',s:'الإحصاء',c:'العلوم',r:4.8,p:58,b:'diamond'},
-    {n:'د. عمر الحربي',s:'هندسة مدنية',c:'الهندسة',r:4.8,p:41,b:'gold'},
-    {n:'د. نورة الشمري',s:'طب أسنان',c:'الطب',r:4.8,p:38,b:'gold'},
-    {n:'د. خالد العسيري',s:'اللغويات',c:'الإنسانية',r:4.6,p:40,b:'gold'},
-    {n:'د. سلمى الحربي',s:'علم نفس',c:'الاجتماعية',r:4.8,p:42,b:'diamond'},
-    {n:'د. سلطان المالكي',s:'إدارة أعمال',c:'الإدارة',r:4.7,p:44,b:'gold'},
-    {n:'د. فاطمة الزهراني',s:'قانون جنائي',c:'القانون',r:4.6,p:20,b:'silver'},
-    {n:'د. محمد العمري',s:'أمن سيبراني',c:'الهندسة',r:4.8,p:52,b:'diamond'},
-    {n:'د. ليلى العتيبي',s:'أدب عربي',c:'الإنسانية',r:4.7,p:25,b:'gold'},
-    {n:'د. نورة القحطاني',s:'اقتصاد',c:'الإدارة',r:4.8,p:38,b:'diamond'}
+const EXPERTS_DATA = [
+    // الطب (5)
+    { n: 'أ.د. عبدالرحمن القحطاني', s: 'الطب البشري - الباطنية', c: 'الطب والعلوم الصحية', r: 4.9, p: 62, exp: '15 سنة', b: 'diamond', bio: 'استشاري باطنية، ناشر في دوريات طبية عالمية' },
+    { n: 'د. نورة الشمري', s: 'طب الأسنان - تقويم', c: 'الطب والعلوم الصحية', r: 4.8, p: 38, exp: '10 سنوات', b: 'diamond', bio: 'أخصائية تقويم أسنان، باحثة في مواد طب الأسنان' },
+    { n: 'د. فيصل المطيري', s: 'الصيدلة السريرية', c: 'الطب والعلوم الصحية', r: 4.7, p: 45, exp: '12 سنة', b: 'gold', bio: 'صيدلي سريري، خبير في اقتصاديات الدواء' },
+    { n: 'د. منى العتيبي', s: 'التمريض - عناية مركزة', c: 'الطب والعلوم الصحية', r: 4.6, p: 29, exp: '8 سنوات', b: 'gold', bio: 'ممرضة ممارسة متقدمة، باحثة في جودة الرعاية' },
+    { n: 'أ.د. خالد السبيعي', s: 'الصحة العامة - وبائيات', c: 'الطب والعلوم الصحية', r: 4.9, p: 55, exp: '18 سنة', b: 'diamond', bio: 'خبير وبائيات، مستشار منظمة الصحة العالمية سابقاً' },
+    // الهندسة (5)
+    { n: 'د. سارة الأحمدي', s: 'الذكاء الاصطناعي وتعلم الآلة', c: 'الهندسة', r: 4.9, p: 48, exp: '11 سنة', b: 'diamond', bio: 'باحثة في التعلم العميق، ناشرة في NeurIPS و ICML' },
+    { n: 'د. عمر الحربي', s: 'الهندسة المدنية - إنشاءات', c: 'الهندسة', r: 4.8, p: 41, exp: '13 سنة', b: 'diamond', bio: 'مهندس استشاري، خبير في تحليل المنشآت' },
+    { n: 'د. ليلى القاسم', s: 'الهندسة الكهربائية - اتصالات', c: 'الهندسة', r: 4.7, p: 35, exp: '9 سنوات', b: 'gold', bio: 'متخصصة في شبكات الجيل الخامس' },
+    { n: 'د. محمد العمري', s: 'الأمن السيبراني', c: 'الهندسة', r: 4.8, p: 52, exp: '14 سنة', b: 'diamond', bio: 'خبير أمن معلومات، حاصل على CISSP و CEH' },
+    { n: 'د. أحمد الشهري', s: 'الهندسة الميكانيكية - طاقة متجددة', c: 'الهندسة', r: 4.7, p: 33, exp: '10 سنوات', b: 'gold', bio: 'باحث في الطاقة الشمسية والأنظمة الحرارية' },
+    // العلوم (4)
+    { n: 'د. محمد القحطاني', s: 'الإحصاء وتحليل البيانات', c: 'العلوم الطبيعية والبحتة', r: 4.8, p: 58, exp: '16 سنة', b: 'diamond', bio: 'إحصائي محترف، خبير في SPSS و R و Python' },
+    { n: 'د. عبير الرشيدي', s: 'الكيمياء التحليلية', c: 'العلوم الطبيعية والبحتة', r: 4.6, p: 24, exp: '7 سنوات', b: 'silver', bio: 'كيميائية متخصصة في التحليل الآلي' },
+    { n: 'د. طارق الشمري', s: 'الأحياء الجزيئية', c: 'العلوم الطبيعية والبحتة', r: 4.7, p: 31, exp: '9 سنوات', b: 'gold', bio: 'باحث في التقنية الحيوية والهندسة الوراثية' },
+    { n: 'د. هبة اليوسف', s: 'الفيزياء الطبية', c: 'العلوم الطبيعية والبحتة', r: 4.5, p: 19, exp: '5 سنوات', b: 'bronze', bio: 'فيزيائية طبية متخصصة في العلاج الإشعاعي' },
+    // الاجتماعية (4)
+    { n: 'د. عبدالله المطيري', s: 'علم الاجتماع', c: 'العلوم الاجتماعية', r: 4.7, p: 36, exp: '12 سنة', b: 'gold', bio: 'باحث في التغير الاجتماعي والتنمية' },
+    { n: 'د. سلمى الحربي', s: 'علم النفس السريري', c: 'العلوم الاجتماعية', r: 4.8, p: 42, exp: '11 سنة', b: 'diamond', bio: 'أخصائية نفسية، باحثة في الصحة النفسية' },
+    { n: 'د. وليد القحطاني', s: 'العلوم السياسية', c: 'العلوم الاجتماعية', r: 4.5, p: 22, exp: '8 سنوات', b: 'silver', bio: 'محلل سياسي وباحث في الشؤون الدولية' },
+    { n: 'د. نادية العجمي', s: 'الإعلام والاتصال', c: 'العلوم الاجتماعية', r: 4.6, p: 28, exp: '9 سنوات', b: 'gold', bio: 'باحثة في الإعلام الرقمي وتحليل المحتوى' },
+    // الإنسانية (4)
+    { n: 'د. ليلى العتيبي', s: 'الأدب العربي', c: 'العلوم الإنسانية والتربوية', r: 4.7, p: 25, exp: '10 سنوات', b: 'gold', bio: 'أستاذة الأدب العربي، متخصصة في النقد الأدبي' },
+    { n: 'د. إبراهيم الدوسري', s: 'التاريخ الإسلامي', c: 'العلوم الإنسانية والتربوية', r: 4.5, p: 18, exp: '7 سنوات', b: 'silver', bio: 'مؤرخ متخصص في التاريخ الإسلامي' },
+    { n: 'د. خالد العسيري', s: 'اللغويات والترجمة', c: 'العلوم الإنسانية والتربوية', r: 4.6, p: 40, exp: '15 سنة', b: 'gold', bio: 'لغوي ومترجم معتمد، خبير في الترجمة الأكاديمية' },
+    { n: 'د. هناء الشهري', s: 'أصول التربية', c: 'العلوم الإنسانية والتربوية', r: 4.4, p: 15, exp: '5 سنوات', b: 'bronze', bio: 'تربوية متخصصة في تطوير المناهج' },
+    // الإدارة (4)
+    { n: 'د. سلطان المالكي', s: 'إدارة الأعمال - استراتيجية', c: 'الإدارة والاقتصاد', r: 4.7, p: 44, exp: '12 سنة', b: 'gold', bio: 'خبير استراتيجية، مستشار إداري' },
+    { n: 'د. ريم الفيصل', s: 'التسويق الرقمي', c: 'الإدارة والاقتصاد', r: 4.6, p: 32, exp: '8 سنوات', b: 'gold', bio: 'باحثة في سلوك المستهلك والتسويق الرقمي' },
+    { n: 'د. عبدالعزيز العنزي', s: 'المحاسبة والمراجعة', c: 'الإدارة والاقتصاد', r: 4.5, p: 26, exp: '10 سنوات', b: 'silver', bio: 'محاسب قانوني، خبير في معايير المحاسبة الدولية' },
+    { n: 'د. نورة القحطاني', s: 'الاقتصاد والتمويل', c: 'الإدارة والاقتصاد', r: 4.8, p: 38, exp: '11 سنة', b: 'diamond', bio: 'اقتصادية متخصصة في الاقتصاد القياسي' },
+    // القانون (4)
+    { n: 'د. فاطمة الزهراني', s: 'القانون الجنائي', c: 'القانون والأنظمة', r: 4.6, p: 20, exp: '9 سنوات', b: 'silver', bio: 'محامية وباحثة في القانون الجنائي المقارن' },
+    { n: 'د. محمد الدوسري', s: 'القانون التجاري', c: 'القانون والأنظمة', r: 4.7, p: 34, exp: '14 سنة', b: 'gold', bio: 'مستشار قانوني، متخصص في قانون الشركات' },
+    { n: 'د. سارة العنزي', s: 'القانون الدولي', c: 'القانون والأنظمة', r: 4.5, p: 16, exp: '6 سنوات', b: 'bronze', bio: 'باحثة في القانون الدولي الإنساني' },
+    { n: 'د. تركي المالكي', s: 'القانون العام', c: 'القانون والأنظمة', r: 4.6, p: 28, exp: '11 سنة', b: 'gold', bio: 'قاضٍ سابق، خبير في القانون الإداري' }
 ];
 
-const LIBRARY = [
-    {t:'قالب خطة بحث Proposal',c:'proposal',f:'Word',d:'نموذج احترافي لخطة البحث'},
-    {t:'قالب رسالة ماجستير كاملة',c:'thesis',f:'Word',d:'قالب شامل مع شرح الفصول'},
-    {t:'قالب رسالة دكتوراه',c:'thesis',f:'Word',d:'قالب متكامل للدكتوراه'},
-    {t:'قالب ورقة علمية LaTeX',c:'paper',f:'LaTeX',d:'متوافق مع مجلات Scopus'},
-    {t:'قالب Cover Letter',c:'cover',f:'Word',d:'رسالة تقديم للمحرر'},
-    {t:'قالب الرد على المحكمين',c:'paper',f:'Word',d:'نموذج رد علمي'},
-    {t:'عرض تقديمي للمناقشة',c:'cover',f:'PowerPoint',d:'عرض احترافي'},
-    {t:'قالب استبيان بحثي',c:'paper',f:'Word',d:'نموذج استبيان جاهز'}
+const LIBRARY_DATA = [
+    { t: 'قالب خطة بحث (Research Proposal)', c: 'proposal', f: 'Word', d: 'نموذج احترافي لخطة البحث الأكاديمي لجميع التخصصات، يتضمن جميع الأقسام المطلوبة.', icon: 'fa-file-word', clr: 'blue', dw: 2450 },
+    { t: 'قالب رسالة ماجستير كاملة', c: 'thesis', f: 'Word', d: 'قالب شامل لرسالة الماجستير مع شرح تفصيلي لكل فصل وقسم.', icon: 'fa-file-word', clr: 'blue', dw: 3210 },
+    { t: 'قالب رسالة دكتوراه', c: 'thesis', f: 'Word', d: 'نموذج متكامل لرسالة الدكتوراه بجميع فصولها وأقسامها.', icon: 'fa-file-word', clr: 'blue', dw: 1890 },
+    { t: 'قالب ورقة علمية LaTeX', c: 'paper', f: 'LaTeX', d: 'قالب LaTeX احترافي متوافق مع متطلبات مجلات Scopus و ISI.', icon: 'fa-file-code', clr: 'purple', dw: 1560 },
+    { t: 'قالب Cover Letter للتقديم', c: 'cover', f: 'Word', d: 'رسالة تغطية احترافية لمحرري المجلات العلمية، قابلة للتخصيص.', icon: 'fa-file-word', clr: 'blue', dw: 980 },
+    { t: 'قالب الرد على ملاحظات المحكمين', c: 'paper', f: 'Word', d: 'نموذج منظم للرد على ملاحظات المحكمين بطريقة علمية واضحة.', icon: 'fa-file-word', clr: 'green', dw: 1230 },
+    { t: 'قالب عرض تقديمي للمناقشة', c: 'presentation', f: 'PowerPoint', d: 'عرض تقديمي احترافي وجذاب لمناقشة الرسالة.', icon: 'fa-file-powerpoint', clr: 'orange', dw: 4100 },
+    { t: 'قالب استبيان بحثي', c: 'paper', f: 'Word', d: 'نموذج استبيان احترافي جاهز للتعديل مع أسئلة نموذجية.', icon: 'fa-file-word', clr: 'blue', dw: 2750 },
+    { t: 'قالب مقابلة بحثية', c: 'paper', f: 'Word', d: 'دليل مقابلة للبحوث النوعية مع أسئلة مفتوحة نموذجية.', icon: 'fa-file-word', clr: 'green', dw: 890 },
+    { t: 'قالب تحليل البيانات الإحصائية', c: 'paper', f: 'Word', d: 'نموذج لعرض نتائج التحليل الإحصائي مع الجداول والرسوم.', icon: 'fa-file-word', clr: 'purple', dw: 1650 },
+    { t: 'قالب خطة بحث - تصميم منهجي', c: 'proposal', f: 'Word', d: 'نموذج خاص لمنهجية البحث الكمي والنوعي بالتفصيل.', icon: 'fa-file-word', clr: 'blue', dw: 2100 },
+    { t: 'قالب ملخص البحث (Abstract)', c: 'paper', f: 'Word', d: 'نموذج كتابة ملخص بحثي احترافي بالعربية والإنجليزية.', icon: 'fa-file-word', clr: 'green', dw: 1340 }
 ];
 
-const FORUM = [
-    {n:'نقاشات البحث العلمي',d:'مناهج وأدوات وتحديات',t:245,r:1890,cl:'#3B82F6',ic:'fa-comments'},
-    {n:'تجارب النشر Scopus',d:'شارك تجربتك',t:178,r:1340,cl:'#10B981',ic:'fa-newspaper'},
-    {n:'استفسارات إحصائية',d:'SPSS و R و AMOS',t:156,r:980,cl:'#F59E0B',ic:'fa-chart-pie'},
-    {n:'فرص ومؤتمرات',d:'منح ومؤتمرات',t:89,r:445,cl:'#8B5CF6',ic:'fa-bullhorn'},
-    {n:'التخصصات الطبية',d:'أبحاث طبية',t:67,r:320,cl:'#EF4444',ic:'fa-stethoscope'},
-    {n:'الهندسة والتقنية',d:'ذكاء اصطناعي',t:92,r:510,cl:'#06B6D4',ic:'fa-microchip'},
-    {n:'قصص نجاح',d:'ألهم الآخرين',t:45,r:280,cl:'#EC4899',ic:'fa-trophy'}
+const FORUM_DATA = [
+    { n: 'نقاشات عامة في البحث العلمي', d: 'مناقشات حول مناهج البحث وأدواته وتحدياته', t: 245, r: 1890, clr: '#3B82F6', icon: 'fa-comments' },
+    { n: 'تجارب النشر في Scopus و ISI', d: 'شارك تجربتك واستفسر عن النشر في المجلات العالمية', t: 178, r: 1340, clr: '#10B981', icon: 'fa-newspaper' },
+    { n: 'استفسارات التحليل الإحصائي', d: 'أسئلة حول SPSS و R و AMOS وتحليل البيانات', t: 156, r: 980, clr: '#F59E0B', icon: 'fa-chart-pie' },
+    { n: 'فرص ومنح ومؤتمرات', d: 'إعلانات المؤتمرات والمنح الدراسية وفرص البحث', t: 89, r: 445, clr: '#8B5CF6', icon: 'fa-bullhorn' },
+    { n: 'قسم التخصصات الطبية', d: 'مناقشات بحثية متخصصة في المجال الطبي والصحي', t: 67, r: 320, clr: '#EF4444', icon: 'fa-stethoscope' },
+    { n: 'قسم الهندسة والتقنية', d: 'حوارات حول أبحاث الهندسة والذكاء الاصطناعي', t: 92, r: 510, clr: '#06B6D4', icon: 'fa-microchip' },
+    { n: 'قصص نجاح الباحثين', d: 'شارك قصة نجاحك الأكاديمي وألهم الآخرين', t: 45, r: 280, clr: '#EC4899', icon: 'fa-trophy' }
 ];
 
-// ═══════ State ═══════
-let ST = {
+// ═══════════════ STATE ═══════════════
+const ST = {
     user: null,
     page: 'home',
     orders: [],
-    notifs: [],
-    sidebarOpen: true
+    notifs: []
 };
 
-// ═══════ Init ═══════
-document.addEventListener('DOMContentLoaded',()=>{
-    // Auth page
-    if(document.querySelector('.auth-body')){
-        initAuth();
-        return;
-    }
-    // Dashboard
+// ═══════════════ INIT ═══════════════
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.querySelector('.auth-body')) { initAuth(); return; }
     checkUser();
-    loadUser();
+    loadUserData();
     initSidebar();
-    initNav();
+    initNavigation();
     initTopbar();
-    fillSpecsSelects();
+    fillAllSpecSelects();
     loadSpecsGrid();
-    loadHome();
-    loadOrders();
-    loadExperts();
-    loadLibrary();
-    loadForum();
-    initForms();
+    loadHomeStats();
+    initAllForms();
+    initFileUploads();
     initModal();
+    loadOrdersPage();
+    loadMessagesPage();
+    initExpertsPage();
+    initLibraryPage();
+    initForumPage();
+    updateAllBadges();
+    updateNotifUI();
 });
 
-// ═══════ Auth ═══════
-function initAuth(){
-    document.querySelectorAll('.auth-tab').forEach(t=>{
-        t.addEventListener('click',function(){
-            document.querySelectorAll('.auth-tab').forEach(x=>x.classList.remove('active'));
+// ═══════════════ AUTH ═══════════════
+function initAuth() {
+    document.querySelectorAll('.auth-tab').forEach(t => {
+        t.addEventListener('click', function() {
+            document.querySelectorAll('.auth-tab').forEach(x => x.classList.remove('active'));
             this.classList.add('active');
-            document.querySelectorAll('.auth-form').forEach(f=>f.classList.remove('active'));
-            document.getElementById(this.dataset.tab+'Form').classList.add('active');
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            document.getElementById(this.dataset.tab + 'Form').classList.add('active');
         });
     });
-    document.getElementById('loginForm').addEventListener('submit',function(e){
+
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const em=document.getElementById('loginEmail').value.trim();
-        const pw=document.getElementById('loginPassword').value;
-        if(!em||!pw) return showAuthMsg('املأ جميع الحقول','error');
-        const user={email:em,name:em.split('@')[0],fullName:em.split('@')[0],firstName:em.split('@')[0],isLoggedIn:true,academicLevel:'researcher'};
-        localStorage.setItem('ahu',JSON.stringify(user));
-        showAuthMsg('تم الدخول بنجاح','success');
-        setTimeout(()=>location.href='dashboard.html',600);
+        const em = document.getElementById('loginEmail').value.trim();
+        const pw = document.getElementById('loginPassword').value;
+        if (!em || !pw) return showAuthMsg('يرجى ملء جميع الحقول', 'error');
+        const user = { email: em, name: em.split('@')[0], fullName: em.split('@')[0], firstName: em.split('@')[0], isLoggedIn: true, academicLevel: 'researcher', specialization: 'general' };
+        localStorage.setItem('ahu', JSON.stringify(user));
+        showAuthMsg('✅ تم تسجيل الدخول بنجاح', 'success');
+        setTimeout(() => location.href = 'dashboard.html', 600);
     });
-    document.getElementById('registerForm').addEventListener('submit',function(e){
+
+    document.getElementById('registerForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        const fn=document.getElementById('regFirstName').value.trim();
-        const ln=document.getElementById('regLastName').value.trim();
-        const em=document.getElementById('regEmail').value.trim();
-        const lv=document.getElementById('regLevel').value;
-        const sp=document.getElementById('regSpecialization').value;
-        const pw=document.getElementById('regPassword').value;
-        const cp=document.getElementById('regConfirm').value;
-        if(!fn||!ln||!em||!lv||!sp||!pw) return showAuthMsg('املأ جميع الحقول','error');
-        if(pw!==cp) return showAuthMsg('كلمة المرور غير متطابقة','error');
-        if(pw.length<8) return showAuthMsg('كلمة المرور 8 أحرف على الأقل','error');
-        const user={firstName:fn,lastName:ln,fullName:fn+' '+ln,name:fn+' '+ln,email:em,academicLevel:lv,specialization:sp,isLoggedIn:true};
-        localStorage.setItem('ahu',JSON.stringify(user));
-        showAuthMsg('تم إنشاء الحساب','success');
-        setTimeout(()=>location.href='dashboard.html',600);
+        const fn = document.getElementById('regFirstName').value.trim();
+        const ln = document.getElementById('regLastName').value.trim();
+        const em = document.getElementById('regEmail').value.trim();
+        const lv = document.getElementById('regLevel').value;
+        const sp = document.getElementById('regSpecialization').value;
+        const pw = document.getElementById('regPassword').value;
+        const cp = document.getElementById('regConfirm').value;
+        if (!fn || !ln || !em || !lv || !sp || !pw || !cp) return showAuthMsg('يرجى ملء جميع الحقول', 'error');
+        if (pw !== cp) return showAuthMsg('كلمة المرور غير متطابقة', 'error');
+        if (pw.length < 8) return showAuthMsg('كلمة المرور 8 أحرف على الأقل', 'error');
+        const user = { firstName: fn, lastName: ln, fullName: fn + ' ' + ln, name: fn + ' ' + ln, email: em, academicLevel: lv, specialization: sp, isLoggedIn: true };
+        localStorage.setItem('ahu', JSON.stringify(user));
+        showAuthMsg('✅ تم إنشاء الحساب بنجاح', 'success');
+        setTimeout(() => location.href = 'dashboard.html', 600);
     });
 }
-function showAuthMsg(txt,type){
-    const el=document.getElementById('authMsg');
-    el.textContent=txt;
-    el.className='auth-msg '+type;
+
+function showAuthMsg(msg, type) {
+    const el = document.getElementById('authMsg');
+    el.textContent = msg;
+    el.className = 'auth-msg ' + type;
 }
 
-// ═══════ Check User ═══════
-function checkUser(){
-    const u=localStorage.getItem('ahu');
-    if(!u){location.href='index.html';return}
-    try{ST.user=JSON.parse(u);if(!ST.user.isLoggedIn)location.href='index.html'}catch(e){location.href='index.html'}
-    ST.orders=JSON.parse(localStorage.getItem('ahu_orders')||'[]');
-    ST.notifs=JSON.parse(localStorage.getItem('ahu_notifs')||'[]');
+// ═══════════════ CHECK USER ═══════════════
+function checkUser() {
+    const raw = localStorage.getItem('ahu');
+    if (!raw) { location.href = 'index.html'; return; }
+    try {
+        ST.user = JSON.parse(raw);
+        if (!ST.user.isLoggedIn) location.href = 'index.html';
+    } catch(e) { location.href = 'index.html'; }
+    ST.orders = JSON.parse(localStorage.getItem('ahu_orders') || '[]');
+    ST.notifs = JSON.parse(localStorage.getItem('ahu_notifs') || '[]');
 }
 
-// ═══════ Load User ═══════
-function loadUser(){
-    const u=ST.user;
-    document.getElementById('sideName').textContent=u.name||'باحث';
-    document.getElementById('greetName').textContent=u.firstName||u.name||'باحث';
-    if(u.fullName){const p=u.fullName.split(' ');document.getElementById('sideAvatar').textContent=p.map(x=>x[0]).join('').substring(0,2);document.getElementById('topAvatar').textContent=p.map(x=>x[0]).join('').substring(0,2)}
-    const rm={bachelor:'بكالوريوس',master:'ماجستير',phd:'دكتوراه',researcher:'باحث'};
-    document.getElementById('sideRole').textContent=rm[u.academicLevel]||'باحث';
+function loadUserData() {
+    const u = ST.user;
+    document.getElementById('sideName').textContent = u.name || 'باحث';
+    document.getElementById('greetName').textContent = u.firstName || u.name || 'باحث';
+    const initials = u.fullName ? u.fullName.split(' ').map(p => p[0]).join('').substring(0, 2) : 'ب';
+    document.getElementById('sideAvatar').textContent = initials;
+    document.getElementById('topAvatar').textContent = initials;
+    const roleMap = { bachelor: 'طالب بكالوريوس', master: 'طالب ماجستير', phd: 'طالب دكتوراه', researcher: 'باحث' };
+    document.getElementById('sideRole').textContent = roleMap[u.academicLevel] || 'باحث';
 }
 
-// ═══════ Sidebar ═══════
-function initSidebar(){
-    document.getElementById('sideToggle').addEventListener('click',()=>{
+// ═══════════════ SIDEBAR ═══════════════
+function initSidebar() {
+    document.getElementById('sideToggle').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('closed');
         document.getElementById('mainContent').classList.toggle('full');
     });
-    document.getElementById('menuBtn').addEventListener('click',()=>{
+    document.getElementById('menuBtn').addEventListener('click', () => {
         document.getElementById('sidebar').classList.toggle('mobile-open');
+    });
+    document.getElementById('logoutBtn').addEventListener('click', () => {
+        if (confirm('هل أنت متأكد من تسجيل الخروج؟')) {
+            localStorage.removeItem('ahu');
+            location.href = 'index.html';
+        }
+    });
+    document.addEventListener('click', (e) => {
+        const sidebar = document.getElementById('sidebar');
+        const menuBtn = document.getElementById('menuBtn');
+        if (window.innerWidth <= 1024 && sidebar.classList.contains('mobile-open') && !sidebar.contains(e.target) && e.target !== menuBtn && !menuBtn.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+        }
     });
 }
 
-// ═══════ Navigation ═══════
-function initNav(){
-    document.querySelectorAll('.side-link[data-page]').forEach(l=>{
-        l.addEventListener('click',function(e){
+// ═══════════════ NAVIGATION ═══════════════
+function initNavigation() {
+    document.querySelectorAll('.side-link[data-page]').forEach(l => {
+        l.addEventListener('click', function(e) {
             e.preventDefault();
             goTo(this.dataset.page);
             document.getElementById('sidebar').classList.remove('mobile-open');
         });
     });
 }
-function goTo(page){
-    ST.page=page;
-    document.querySelectorAll('.side-link').forEach(l=>l.classList.remove('active'));
-    const link=document.querySelector(`.side-link[data-page="${page}"]`);
-    if(link)link.classList.add('active');
-    document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-    const el=document.getElementById('page-'+page);
-    if(el)el.classList.add('active');
-    document.getElementById('pageContainer').scrollTop=0;
-    if(page==='orders')loadOrders();
-    if(page==='experts')loadExperts();
-    if(page==='library')loadLibrary();
-    if(page==='forum')loadForum();
-    if(page==='home')loadHome();
-    if(page==='messages')loadMessages();
+
+function goTo(page) {
+    ST.page = page;
+    document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
+    const link = document.querySelector(`.side-link[data-page="${page}"]`);
+    if (link) link.classList.add('active');
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    const el = document.getElementById('page-' + page);
+    if (el) el.classList.add('active');
+    document.getElementById('pageContainer').scrollTop = 0;
+    if (page === 'orders') loadOrdersPage();
+    if (page === 'experts') loadExpertsGrid();
+    if (page === 'library') loadLibraryGrid();
+    if (page === 'forum') loadForumGrid();
+    if (page === 'messages') loadMessagesPage();
+    if (page === 'home') loadHomeStats();
 }
 
-// ═══════ Topbar ═══════
-function initTopbar(){
-    document.getElementById('notifBell').addEventListener('click',function(e){
+// ═══════════════ TOPBAR ═══════════════
+function initTopbar() {
+    document.getElementById('notifBell').addEventListener('click', function(e) {
         e.stopPropagation();
-        updateNotifs();
+        updateNotifUI();
         document.getElementById('notifDrop').classList.toggle('show');
     });
-    document.addEventListener('click',()=>document.getElementById('notifDrop').classList.remove('show'));
-    document.getElementById('logoutBtn').addEventListener('click',()=>{
-        if(confirm('تسجيل الخروج؟')){localStorage.removeItem('ahu');location.href='index.html'}
-    });
+    document.addEventListener('click', () => document.getElementById('notifDrop').classList.remove('show'));
 }
 
-// ═══════ Fill Specs ═══════
-function fillSpecsSelects(){
-    document.querySelectorAll('.spec-select').forEach(sel=>{
-        if(sel.options.length>1)return;
-        Object.entries(SPECS).forEach(([k,v])=>{
-            const og=document.createElement('optgroup');
-            og.label=k;
-            v.branches.forEach(b=>og.innerHTML+=`<option>${b}</option>`);
+// ═══════════════ NOTIFICATIONS ═══════════════
+function addNotification(type, msg, icon, color) {
+    ST.notifs.unshift({ id: Date.now(), type, msg, icon, color, time: 'الآن', read: false });
+    if (ST.notifs.length > 50) ST.notifs = ST.notifs.slice(0, 50);
+    localStorage.setItem('ahu_notifs', JSON.stringify(ST.notifs));
+    updateNotifUI();
+    updateAllBadges();
+}
+
+function updateNotifUI() {
+    const body = document.querySelector('.notif-body');
+    const countEl = document.querySelector('.notif-head span');
+    const dot = document.querySelector('.bell-dot');
+    if (!body) return;
+    const unread = ST.notifs.filter(n => !n.read).length;
+    if (countEl) countEl.textContent = unread > 0 ? unread + ' جديدة' : '0';
+    if (dot) dot.style.display = unread > 0 ? 'block' : 'none';
+    if (ST.notifs.length === 0) {
+        body.innerHTML = '<p class="notif-empty">لا توجد إشعارات حالياً</p>';
+        return;
+    }
+    body.innerHTML = ST.notifs.slice(0, 8).map(n => `
+        <div class="notif-item" style="padding:12px 16px;border-bottom:1px solid var(--g2);${n.read?'':'background:var(--pbg)'}">
+            <i class="fa-solid ${n.icon}" style="color:${n.color};margin-left:8px"></i>
+            <span style="font-size:.85rem">${n.msg}</span>
+            <br><small style="color:var(--g5)">${n.time}</small>
+        </div>
+    `).join('');
+}
+
+function updateAllBadges() {
+    const active = ST.orders.filter(o => o.st !== 'completed').length;
+    const b = document.getElementById('ordBadge');
+    if (b) { b.textContent = active; b.style.display = active > 0 ? 'inline-block' : 'none'; }
+}
+
+// ═══════════════ HOME ═══════════════
+function loadHomeStats() {
+    const active = ST.orders.filter(o => o.st !== 'completed').length;
+    const completed = ST.orders.filter(o => o.st === 'completed').length;
+    document.getElementById('activeNum').textContent = active;
+    document.getElementById('completedNum').textContent = completed;
+}
+
+function loadSpecsGrid() {
+    const grid = document.getElementById('specsGrid');
+    if (!grid) return;
+    grid.innerHTML = Object.entries(SPECS_DATA).map(([k, v]) => `
+        <div class="spec-card">
+            <img src="${v.img}" alt="${k}" loading="lazy">
+            <div class="spec-body">
+                <i class="fa-solid fa-folder-tree"></i>
+                <div>
+                    <h5>${k}</h5>
+                    <div class="branches">${v.branches.map(b => `<span>${b}</span>`).join('')}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ═══════════════ FILL SPECIALIZATION SELECTS ═══════════════
+function fillAllSpecSelects() {
+    document.querySelectorAll('.spec-select-all').forEach(sel => {
+        if (sel.options.length > 1) return;
+        sel.innerHTML = '<option value="">اختر التخصص الدقيق...</option>';
+        Object.entries(SPECS_DATA).forEach(([k, v]) => {
+            const og = document.createElement('optgroup');
+            og.label = k;
+            v.branches.forEach(b => { og.innerHTML += `<option value="${b}">${b}</option>`; });
             sel.appendChild(og);
         });
     });
 }
 
-// ═══════ Load Specs Grid ═══════
-function loadSpecsGrid(){
-    const g=document.getElementById('specsGrid');
-    if(!g)return;
-    g.innerHTML=Object.entries(SPECS).map(([k,v])=>`
-        <div class="spec-card"><img src="${v.img}" alt="${k}"><div class="spec-info"><i class="fa-solid fa-folder"></i><div><h5>${k}</h5><span>${v.branches.slice(0,3).join('، ')}...</span></div></div></div>
-    `).join('');
-}
-
-// ═══════ Load Home ═══════
-function loadHome(){
-    const active=ST.orders.filter(o=>o.st!=='completed');
-    const completed=ST.orders.filter(o=>o.st==='completed');
-    document.getElementById('activeNum').textContent=active.length;
-    document.getElementById('completedNum').textContent=completed.length;
-    const ac=document.querySelector('.active-orders-cards');
-    if(ac)ac.innerHTML=active.length===0?'<div class="empty"><i class="fa-solid fa-clipboard-list"></i><p>لا توجد طلبات نشطة</p></div>':'';
-}
-
-// ═══════ Init All Forms ═══════
-function initForms(){
-    const forms=['thesisForm','pubForm','transForm','statsForm','plagForm','gradForm'];
-    const names=['الرسائل الجامعية','النشر العلمي','الترجمة الأكاديمية','التحليل الإحصائي','فحص الاقتباس','مشاريع التخرج'];
-    forms.forEach((id,i)=>{
-        const f=document.getElementById(id);
-        if(f)f.addEventListener('submit',function(e){e.preventDefault();submitForm(f,names[i])});
+// ═══════════════ FORMS ═══════════════
+function initAllForms() {
+    const forms = [
+        { id: 'thesisForm', name: 'خدمة الرسائل الجامعية' },
+        { id: 'pubForm', name: 'خدمة النشر العلمي' },
+        { id: 'transForm', name: 'خدمة الترجمة الأكاديمية' },
+        { id: 'statsForm', name: 'خدمة التحليل الإحصائي' },
+        { id: 'plagForm', name: 'خدمة فحص الاقتباس' },
+        { id: 'gradForm', name: 'خدمة مشاريع التخرج' }
+    ];
+    forms.forEach(({ id, name }) => {
+        const f = document.getElementById(id);
+        if (f) f.addEventListener('submit', function(e) { e.preventDefault(); submitForm(f, name); });
     });
 }
 
-function submitForm(form,name){
-    const d={service:name,date:new Date().toLocaleString('ar-SA'),id:'AH-'+Date.now().toString(36).toUpperCase()};
-    form.querySelectorAll('input,select,textarea').forEach(el=>{
-        const lb=el.closest('.fg')?.querySelector('label')?.textContent?.replace('*','').trim();
-        if(lb&&el.value)d[lb]=el.value;
+function submitForm(form, serviceName) {
+    const btn = form.querySelector('.btn-submit');
+    const orig = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جارٍ الإرسال...';
+
+    const data = { service: serviceName, date: new Date().toLocaleString('ar-SA'), id: 'AH-' + Date.now().toString(36).toUpperCase() };
+    form.querySelectorAll('input, select, textarea').forEach(el => {
+        const label = el.closest('.fg')?.querySelector('label')?.textContent?.replace(/\*/g, '').trim();
+        if (label && el.value && el.type !== 'file') data[label] = el.value;
     });
-    // Save locally
-    ST.orders.unshift({id:d.id,title:d['العنوان']||d['فكرة المشروع']||name,st:'in-progress',date:d.date,service:name});
-    localStorage.setItem('ahu_orders',JSON.stringify(ST.orders));
-    // Email
-    sendEmail(d);
-    // Notif
-    addNotif('success','تم تقديم طلب '+name+' بنجاح','fa-check-circle','#10B981');
-    // Reset
-    form.reset();
-    form.querySelectorAll('.uploaded-files-list').forEach(e=>e.remove());
-    // Update
-    loadHome();
-    updateBadges();
-    // Alert & redirect
-    alert('✅ تم تقديم طلبك بنجاح!\nرقم الطلب: '+d.id+'\nسنرسل التفاصيل لإيميل: scottmcnamara316@gmail.com');
-    goTo('orders');
+
+    ST.orders.unshift({
+        id: data.id,
+        title: data['عنوان البحث'] || data['فكرة المشروع'] || data['عنوان'] || serviceName,
+        st: 'in-progress',
+        date: data.date,
+        service: serviceName
+    });
+    if (ST.orders.length > 100) ST.orders = ST.orders.slice(0, 100);
+    localStorage.setItem('ahu_orders', JSON.stringify(ST.orders));
+
+    sendToEmail(data, serviceName);
+    addNotification('success', `تم تقديم ${serviceName} بنجاح! رقم الطلب: ${data.id}`, 'fa-circle-check', '#10B981');
+
+    setTimeout(() => {
+        form.reset();
+        form.querySelectorAll('.uploaded-files-list').forEach(e => e.remove());
+        btn.disabled = false;
+        btn.innerHTML = orig;
+        loadHomeStats();
+        updateAllBadges();
+        alert('✅ تم تقديم طلبك بنجاح!\n📋 رقم الطلب: ' + data.id + '\n📧 سيتم إرسال التفاصيل إلى: scottmcnamara316@gmail.com\n📱 تواصل معنا واتساب للمتابعة');
+        goTo('orders');
+    }, 1200);
 }
 
-function sendEmail(d){
-    let body='طلب خدمة: '+d.service+'\nالرقم: '+d.id+'\nالتاريخ: '+d.date+'\n---\n';
-    Object.entries(d).forEach(([k,v])=>{if(!['service','date','id'].includes(k)&&v)body+=k+': '+v+'\n'});
-    // Mailto
-    try{window.open('mailto:scottmcnamara316@gmail.com?subject=طلب '+d.service+' | '+d.id+'&body='+encodeURIComponent(body),'_blank','width=1,height=1')}catch(e){}
-    // WhatsApp notification
-    body+='\n---\nرابط الواتساب: https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t';
+function sendToEmail(data, serviceName) {
+    let body = `طلب خدمة جديد - AcademiaHub\n`;
+    body += `══════════════════════\n`;
+    body += `📋 رقم الطلب: ${data.id}\n📅 التاريخ: ${data.date}\n📦 الخدمة: ${serviceName}\n`;
+    body += `👤 العميل: ${ST.user?.fullName || 'غير محدد'}\n📧 الإيميل: ${ST.user?.email || 'غير محدد'}\n`;
+    body += `──────────────────────\n`;
+    Object.entries(data).forEach(([k, v]) => { if (!['service', 'date', 'id'].includes(k) && v) body += `• ${k}: ${v}\n`; });
+    body += `──────────────────────\n📱 واتساب: https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t\n`;
+    const subject = encodeURIComponent(`طلب ${serviceName} | ${data.id}`);
+    const encodedBody = encodeURIComponent(body);
+    try {
+        const w = window.open(`mailto:scottmcnamara316@gmail.com?subject=${subject}&body=${encodedBody}`, '_blank', 'width=1,height=1');
+        if (w) setTimeout(() => w.close(), 800);
+    } catch(e) {}
 }
 
-// ═══════ Orders ═══════
-function loadOrders(filter='all'){
-    const c=document.getElementById('ordersList');
-    if(!c)return;
-    let o=ST.orders;
-    if(filter!=='all')o=o.filter(x=>x.st===filter);
-    if(o.length===0){c.innerHTML='<div class="empty"><i class="fa-solid fa-inbox"></i><p>لا توجد طلبات</p></div>';return}
-    c.innerHTML=o.map(o=>`
+// ═══════════════ FILE UPLOADS ═══════════════
+function initFileUploads() {
+    document.addEventListener('click', function(e) {
+        const fb = e.target.closest('.file-box');
+        if (fb) { const inp = fb.querySelector('input[type="file"]'); if (inp) inp.click(); }
+    });
+    document.addEventListener('change', function(e) {
+        if (e.target.type === 'file' && e.target.closest('.file-box')) {
+            const fb = e.target.closest('.file-box');
+            const old = fb.parentElement.querySelector('.uploaded-files-list');
+            if (old) old.remove();
+            if (e.target.files.length > 0) {
+                const list = document.createElement('div');
+                list.className = 'uploaded-files-list';
+                list.style.cssText = 'margin-top:8px;display:flex;flex-wrap:wrap;gap:6px';
+                Array.from(e.target.files).forEach(f => {
+                    const item = document.createElement('span');
+                    item.style.cssText = 'background:#ECFDF5;color:#059669;padding:6px 12px;border-radius:20px;font-size:.78rem;font-weight:600';
+                    item.innerHTML = `<i class="fa-solid fa-file"></i> ${f.name}`;
+                    list.appendChild(item);
+                });
+                fb.after(list);
+            }
+        }
+    });
+}
+
+// ═══════════════ ORDERS PAGE ═══════════════
+function loadOrdersPage(filter = 'all') {
+    const container = document.getElementById('ordersList');
+    if (!container) return;
+    let orders = ST.orders;
+    if (filter === 'in-progress') orders = orders.filter(o => o.st !== 'completed');
+    if (filter === 'completed') orders = orders.filter(o => o.st === 'completed');
+    if (orders.length === 0) {
+        container.innerHTML = `<div class="empty" style="padding:50px"><i class="fa-solid fa-inbox"></i><p>لا توجد طلبات</p><button class="f-btn" onclick="goTo('thesis')" style="margin-top:12px">طلب خدمة جديدة</button></div>`;
+        return;
+    }
+    container.innerHTML = orders.map(o => `
         <div class="order-row">
             <span class="oid">${o.id}</span>
             <span class="otitle">${o.title}</span>
-            <span class="ostatus ${o.st==='completed'?'status-done':'status-active'}">${o.st==='completed'?'مكتمل':'نشط'}</span>
-            <span>${o.date}</span>
-            <button class="f-btn" onclick="goTo('messages')">مراسلة</button>
-        </div>
-    `).join('');
-    // Filters
-    document.querySelectorAll('#orderFilters .f-btn').forEach(b=>{
-        b.addEventListener('click',function(){
-            document.querySelectorAll('#orderFilters .f-btn').forEach(x=>x.classList.remove('active'));
-            this.classList.add('active');
-            loadOrders(this.dataset.f);
-        });
-    });
-}
-
-// ═══════ Messages ═══════
-function loadMessages(){
-    const l=document.getElementById('msgList');
-    if(!l)return;
-    if(ST.orders.length===0){l.innerHTML='<div class="empty"><i class="fa-solid fa-comment-slash"></i><p>لا محادثات</p></div>';return}
-    l.innerHTML=ST.orders.map(o=>`
-        <div class="order-row" style="cursor:pointer" onclick="document.getElementById('msgChat').innerHTML='<div style=padding:20px;text-align:center><i class=fa-solid fa-comments style=font-size:2rem;color:var(--p)></i><p>محادثة: ${o.id}</p></div>'">
-            <strong>${o.id}</strong><span>${o.service}</span>
+            <span class="ostatus ${o.st === 'completed' ? 'status-done' : 'status-active'}">${o.st === 'completed' ? 'مكتمل' : 'نشط'}</span>
+            <span class="odate">${o.date}</span>
+            <button class="f-btn" onclick="goTo('messages')"><i class="fa-solid fa-comment"></i> مراسلة</button>
         </div>
     `).join('');
 }
 
-// ═══════ Experts ═══════
-function loadExperts(filter='all',search=''){
-    const g=document.getElementById('expGrid');
-    if(!g)return;
-    let e=EXPERTS;
-    if(filter!=='all')e=e.filter(x=>x.c===filter);
-    if(search)e=e.filter(x=>x.n.includes(search)||x.s.includes(search));
-    g.innerHTML=e.map(x=>`
+// ═══════════════ MESSAGES PAGE ═══════════════
+function loadMessagesPage() {
+    const list = document.getElementById('msgList');
+    if (!list) return;
+    if (ST.orders.length === 0) {
+        list.innerHTML = '<div class="empty" style="padding:30px"><i class="fa-solid fa-comment-slash"></i><p>لا توجد محادثات</p></div>';
+        return;
+    }
+    list.innerHTML = ST.orders.map(o => `
+        <div style="padding:16px;border-bottom:1px solid var(--g2);cursor:pointer;transition:var(--tr)" onclick="document.getElementById('msgChat').innerHTML='<div style=text-align:center;padding:40px><i class=fa-solid fa-comments style=font-size:3rem;color:var(--p)></i><h4>محادثة الطلب ${o.id}</h4><p>${o.title}</p></div>'">
+            <strong>${o.id}</strong>
+            <p style="font-size:.8rem;color:var(--g5)">${o.service}</p>
+        </div>
+    `).join('');
+}
+
+// ═══════════════ EXPERTS PAGE ═══════════════
+function initExpertsPage() {
+    document.getElementById('expFilter').addEventListener('change', () => loadExpertsGrid());
+    document.getElementById('expSearch').addEventListener('input', () => loadExpertsGrid());
+    loadExpertsGrid();
+}
+
+function loadExpertsGrid() {
+    const filter = document.getElementById('expFilter').value;
+    const search = document.getElementById('expSearch').value.toLowerCase();
+    let experts = EXPERTS_DATA;
+    if (filter !== 'all') experts = experts.filter(e => e.c === filter);
+    if (search) experts = experts.filter(e => e.n.toLowerCase().includes(search) || e.s.toLowerCase().includes(search));
+    const grid = document.getElementById('expGrid');
+    grid.innerHTML = experts.map(e => {
+        const badgeLabels = { diamond: '💎 خبير ماسي', gold: '🥇 خبير ذهبي', silver: '🥈 خبير فضي', bronze: '🥉 خبير برونزي' };
+        return `
         <div class="exp-card">
+            <span class="exp-badge exp-badge-${e.b}">${badgeLabels[e.b]}</span>
             <div class="exp-avatar"><i class="fa-solid fa-user-tie"></i></div>
-            <h4>${x.n}</h4>
-            <p class="exp-spec">${x.s}</p>
-            <div class="exp-stars">${'★'.repeat(Math.floor(x.r))}${x.r%1>=0.5?'½':''} ${x.r}</div>
-            <div class="exp-stats"><span>${x.p} مشروع</span><span>${Math.round(x.r*20)}% رضا</span></div>
-            <button class="f-btn" onclick="goTo('thesis')">طلب خدمة</button>
-        </div>
-    `).join('');
-    document.getElementById('expFilter').addEventListener('change',function(){loadExperts(this.value,document.getElementById('expSearch').value)});
-    document.getElementById('expSearch').addEventListener('input',function(){loadExperts(document.getElementById('expFilter').value,this.value)});
+            <h4>${e.n}</h4>
+            <p class="exp-spec">${e.s}</p>
+            <div class="exp-stars">${'★'.repeat(Math.floor(e.r))}${e.r % 1 >= 0.5 ? '½' : ''} ${e.r}</div>
+            <p style="font-size:.78rem;color:var(--g5);margin:8px 0">${e.bio}</p>
+            <div class="exp-stats"><div><b>${e.p}</b><span>مشروع</span></div><div><b>${e.exp}</b><span>خبرة</span></div><div><b>${Math.round(e.r * 20)}%</b><span>رضا</span></div></div>
+            <button class="f-btn" onclick="goTo('thesis')" style="margin-top:8px"><i class="fa-solid fa-paper-plane"></i> طلب خدمة</button>
+        </div>`;
+    }).join('');
 }
 
-// ═══════ Library ═══════
-function loadLibrary(filter='all'){
-    const g=document.getElementById('libGrid');
-    if(!g)return;
-    let l=LIBRARY;
-    if(filter!=='all')l=l.filter(x=>x.c===filter);
-    g.innerHTML=l.map(x=>`
-        <div class="lib-card">
-            <div class="lib-icon"><i class="fa-solid fa-file"></i></div>
-            <span style="font-size:.7rem;background:var(--g1);padding:2px 8px;border-radius:10px">${x.f}</span>
-            <h5>${x.t}</h5><p>${x.d}</p>
-            <button class="f-btn" onclick="alert('تحميل: ${x.t}')"><i class="fa-solid fa-download"></i> تحميل</button>
-        </div>
-    `).join('');
-    document.querySelectorAll('#libFilters .f-btn').forEach(b=>{
-        b.addEventListener('click',function(){
-            document.querySelectorAll('#libFilters .f-btn').forEach(x=>x.classList.remove('active'));
+// ═══════════════ LIBRARY PAGE ═══════════════
+function initLibraryPage() {
+    document.querySelectorAll('#libFilters .f-btn').forEach(b => {
+        b.addEventListener('click', function() {
+            document.querySelectorAll('#libFilters .f-btn').forEach(x => x.classList.remove('active'));
             this.classList.add('active');
-            loadLibrary(this.dataset.f);
+            loadLibraryGrid(this.dataset.f);
         });
     });
+    loadLibraryGrid();
 }
 
-// ═══════ Forum ═══════
-function loadForum(){
-    const g=document.getElementById('forumGrid');
-    if(!g)return;
-    g.innerHTML=FORUM.map(x=>`
-        <div class="forum-card">
-            <div class="forum-icon" style="background:${x.cl}20;color:${x.cl}"><i class="fa-solid ${x.ic}"></i></div>
-            <div class="forum-info"><h4>${x.n}</h4><p>${x.d}</p></div>
-            <div><b>${x.t}</b><small> موضوع</small></div>
+function loadLibraryGrid(filter = 'all') {
+    let items = LIBRARY_DATA;
+    if (filter !== 'all') items = items.filter(i => i.c === filter);
+    document.getElementById('libGrid').innerHTML = items.map(i => `
+        <div class="lib-card">
+            <div class="lib-icon-box"><i class="fa-solid ${i.icon}"></i></div>
+            <span class="lib-format">${i.f}</span>
+            <h5>${i.t}</h5>
+            <p>${i.d}</p>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <button class="lib-dl-btn" onclick="downloadTemplate('${i.t}')"><i class="fa-solid fa-download"></i> تحميل</button>
+                <span style="font-size:.75rem;color:var(--g4)"><i class="fa-solid fa-download"></i> ${i.dw.toLocaleString()}</span>
+            </div>
+        </div>
+    `).join('');
+}
+
+function downloadTemplate(title) {
+    alert('📥 جارٍ تحميل: ' + title + '\n\nسيتم تحميل الملف مباشرة.');
+}
+
+// ═══════════════ FORUM PAGE ═══════════════
+function initForumPage() {
+    document.querySelector('.btn-new').addEventListener('click', () => {
+        alert('📝 سيتم فتح نموذج إنشاء موضوع جديد في النسخة الكاملة.');
+    });
+    loadForumGrid();
+}
+
+function loadForumGrid() {
+    document.getElementById('forumGrid').innerHTML = FORUM_DATA.map(f => `
+        <div class="forum-card" onclick="alert('📂 ${f.n}\\nسيتم فتح المنتدى في النسخة الكاملة.')">
+            <div class="forum-icon-circle" style="background:${f.clr}20;color:${f.clr}"><i class="fa-solid ${f.icon}"></i></div>
+            <div class="finfo"><h4>${f.n}</h4><p>${f.d}</p></div>
+            <div class="forum-stats"><div><b>${f.t}</b><small>موضوع</small></div><div><b>${f.r}</b><small>رد</small></div></div>
             <i class="fa-solid fa-chevron-left" style="color:var(--g4)"></i>
         </div>
     `).join('');
 }
 
-// ═══════ Notifications ═══════
-function addNotif(type,msg,icon,color){
-    ST.notifs.unshift({id:Date.now(),type,msg,icon,color,time:'الآن',read:false});
-    localStorage.setItem('ahu_notifs',JSON.stringify(ST.notifs));
-    updateNotifs();
-    updateBadges();
-}
-function updateNotifs(){
-    const b=document.getElementById('notifDrop').querySelector('.notif-body');
-    if(ST.notifs.length===0){b.innerHTML='<p style="text-align:center;color:#94A3B8;padding:20px">لا توجد إشعارات</p>';return}
-    b.innerHTML=ST.notifs.slice(0,5).map(n=>`<div style="padding:12px 16px;border-bottom:1px solid var(--g2)"><i class="fa-solid ${n.icon}" style="color:${n.color}"></i> ${n.msg}<br><small>${n.time}</small></div>`).join('');
-    document.querySelector('.notif-head span').textContent=ST.notifs.filter(n=>!n.read).length;
+// ═══════════════ MODAL ═══════════════
+function initModal() {
+    document.querySelector('.modal-x').addEventListener('click', () => document.getElementById('modal').classList.remove('show'));
+    document.querySelector('.modal-bg').addEventListener('click', () => document.getElementById('modal').classList.remove('show'));
 }
 
-// ═══════ Badges ═══════
-function updateBadges(){
-    const active=ST.orders.filter(o=>o.st!=='completed').length;
-    const b=document.getElementById('ordBadge');
-    if(b){b.textContent=active;b.style.display=active>0?'inline':'none'}
-}
-
-// ═══════ Modal ═══════
-function initModal(){
-    document.querySelector('.modal-x').addEventListener('click',()=>document.getElementById('modal').classList.remove('show'));
-    document.querySelector('.modal-bg').addEventListener('click',()=>document.getElementById('modal').classList.remove('show'));
-}
-function showModal(title,content){
-    document.getElementById('modalTitle').textContent=title;
-    document.getElementById('modalBody').innerHTML=content;
+function showModal(title, content) {
+    document.getElementById('modalTitle').textContent = title;
+    document.getElementById('modalBody').innerHTML = content;
     document.getElementById('modal').classList.add('show');
 }
 
-// ═══════ File Upload ═══════
-document.addEventListener('click',function(e){
-    const fb=e.target.closest('.file-box');
-    if(fb){const inp=fb.querySelector('input[type="file"]');if(inp)inp.click()}
-});
-document.addEventListener('change',function(e){
-    if(e.target.closest('.file-box')&&e.target.type==='file'){
-        const fb=e.target.closest('.file-box');
-        const fl=document.createElement('div');
-        fl.style.cssText='margin-top:8px;font-size:.8rem;color:var(--s)';
-        fl.textContent='✅ '+Array.from(e.target.files).map(f=>f.name).join('، ');
-        fb.after(fl);
-    }
-});
+// ═══════════════ GLOBALS ═══════════════
+window.goTo = goTo;
+window.downloadTemplate = downloadTemplate;
+window.showModal = showModal;
 
-// ═══════ Global ═══════
-window.goTo=goTo;
-window.showModal=showModal;
+console.log('✅ AcademiaHub v2.0 - Complete System Ready');
+console.log('📧 Email: scottmcnamara316@gmail.com');
+console.log('📱 WhatsApp: https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mode=gi_t');
+console.log('👥 Experts:', EXPERTS_DATA.length);
+console.log('📚 Library:', LIBRARY_DATA.length);
+console.log('💬 Forum:', FORUM_DATA.length);
