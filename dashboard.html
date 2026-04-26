@@ -35,6 +35,10 @@
             <a href="#" class="side-link" data-page="statistics"><i class="fa-solid fa-chart-pie"></i> <span>التحليل الإحصائي</span></a>
             <a href="#" class="side-link" data-page="plagiarism"><i class="fa-solid fa-check-double"></i> <span>فحص الاقتباس</span></a>
             <a href="#" class="side-link" data-page="graduation"><i class="fa-solid fa-graduation-cap"></i> <span>مشاريع التخرج</span></a>
+            <a href="#" class="side-link" data-page="consulting"><i class="fa-solid fa-user-check"></i> <span>استشارات بحثية</span></a>
+            <a href="#" class="side-link" data-page="formatting"><i class="fa-solid fa-pen-ruler"></i> <span>تنسيق وتدقيق</span></a>
+            <a href="#" class="side-link" data-page="training"><i class="fa-solid fa-chalkboard-user"></i> <span>تدريب أكاديمي</span></a>
+            <a href="#" class="side-link" data-page="tools"><i class="fa-solid fa-toolbox"></i> <span>أدوات الباحث</span></a>
             <div class="side-divider"></div>
             <div class="side-label">المجتمع والمعرفة</div>
             <a href="#" class="side-link" data-page="experts"><i class="fa-solid fa-user-tie"></i> <span>خبراؤنا</span></a>
@@ -139,6 +143,10 @@
                         <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="استشارة بحثية" loading="lazy">
                         <div class="svc-info"><i class="fa-solid fa-user-check"></i><div><h4>استشارة بحثية سريعة</h4><p>اختيار موضوع، منهجية، خطة نشر</p></div></div>
                     </div>
+                    <div class="svc-card" onclick="goTo('consulting')"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80" alt="استشارات بحثية" loading="lazy"><div class="svc-badge svc-badge-purple">استشارة</div><div class="svc-info"><i class="fa-solid fa-user-check"></i><div><h4>استشارات بحثية متخصصة</h4><p>موضوع، مشكلة، منهجية، خطة نشر</p></div></div></div>
+                    <div class="svc-card" onclick="goTo('formatting')"><img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&q=80" alt="تنسيق وتدقيق" loading="lazy"><div class="svc-info"><i class="fa-solid fa-pen-ruler"></i><div><h4>التنسيق والتدقيق</h4><p>لغة، مراجع، قالب جامعة أو مجلة</p></div></div></div>
+                    <div class="svc-card" onclick="goTo('training')"><img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&q=80" alt="تدريب أكاديمي" loading="lazy"><div class="svc-badge svc-badge-orange">ورش</div><div class="svc-info"><i class="fa-solid fa-chalkboard-user"></i><div><h4>تدريب وورش أكاديمية</h4><p>SPSS، نشر، منهجية، Zotero</p></div></div></div>
+                    <div class="svc-card" onclick="goTo('tools')"><img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=600&q=80" alt="أدوات الباحث" loading="lazy"><div class="svc-info"><i class="fa-solid fa-toolbox"></i><div><h4>أدوات الباحث</h4><p>قوائم فحص، قوالب، حاسبات بحثية</p></div></div></div>
                 </div>
 
                 <div class="value-strip">
@@ -148,7 +156,13 @@
                     <div><i class="fa-solid fa-chart-line"></i><b>متابعة الطلب</b><span>حالة كل خدمة داخل لوحة التحكم</span></div>
                 </div>
 
-
+                <h3 class="sec-title"><i class="fa-solid fa-sparkles"></i> أقسام جديدة تخدم الطالب من البداية للنشر</h3>
+                <div class="quick-sections-grid">
+                    <button onclick="goTo('consulting')"><i class="fa-solid fa-lightbulb"></i><b>تحديد الفكرة</b><span>اقتراح موضوع، مشكلة، أسئلة، فرضيات</span></button>
+                    <button onclick="goTo('formatting')"><i class="fa-solid fa-spell-check"></i><b>تدقيق وتنسيق</b><span>لغة، مراجع، هوامش، قالب رسمي</span></button>
+                    <button onclick="goTo('training')"><i class="fa-solid fa-person-chalkboard"></i><b>ورش تدريبية</b><span>منهجية، تحليل، نشر، Zotero/Mendeley</span></button>
+                    <button onclick="goTo('tools')"><i class="fa-solid fa-list-check"></i><b>أدوات مساعدة</b><span>قوائم فحص، حاسبات، نماذج جاهزة</span></button>
+                </div>
 
                 <h3 class="sec-title"><i class="fa-solid fa-briefcase"></i> نماذج من الأعمال السابقة</h3>
                 <p class="section-lead">مجموعة عناوين ومجالات بحثية تظهر للزائر تنوع الأعمال التي يمكن تنفيذها أو تطويرها داخل المنصة.</p>
@@ -195,6 +209,7 @@
                 <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80')">
                     <div><i class="fa-solid fa-file-pen"></i><h2>خدمات الرسائل الجامعية</h2><p>مساعدة أكاديمية متكاملة لرسائل الماجستير والدكتوراه</p></div>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="thesisForm">
                     <div class="form-card"><h4><span class="step-num">1</span> معلومات أساسية</h4>
                         <div class="fg2">
@@ -216,6 +231,7 @@
                         <div class="fg"><label>وصف إضافي للطلب</label><textarea rows="4" placeholder="اذكر أي تفاصيل إضافية أو متطلبات خاصة..."></textarea></div>
                         <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملفات المساعدة</p><span>PDF, Word - يمكنك رفع خطة البحث أو أي مراجع</span><input type="file" multiple accept=".pdf,.docx,.doc" hidden></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
                 </form>
             </div>
@@ -240,6 +256,7 @@
                     <div class="regional-grid" id="regionalJournalsGrid"></div>
                     <ul class="publication-extras" id="publicationExtras"></ul>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="pubForm">
                     <div class="form-card"><h4><span class="step-num">1</span> حالة البحث</h4>
                         <div class="fg"><label>هل قمت بكتابة البحث بالفعل؟ <span class="req">*</span></label><select required><option value="">اختر...</option><option>نعم، لدي بحث جاهز وأريد نشره</option><option>لدي مسودة أولية تحتاج تطوير</option><option>لدي فكرة بحث فقط وأحتاج مساعدة في كتابته</option><option>أحتاج مساعدة كاملة من الفكرة حتى النشر</option></select></div>
@@ -253,6 +270,7 @@
                     <div class="form-card"><h4><span class="step-num">3</span> الخدمات المطلوبة</h4>
                         <div class="checks"><label><input type="checkbox" checked> اختيار المجلة المناسبة</label><label><input type="checkbox" checked> تنسيق البحث حسب قالب المجلة</label><label><input type="checkbox"> كتابة Cover Letter</label><label><input type="checkbox"> متابعة التحكيم والرد على المحكمين</label><label><input type="checkbox"> ترجمة البحث للإنجليزية</label><label><input type="checkbox"> إعادة التقديم في حال الرفض</label></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم الطلب</button>
                 </form>
             </div>
@@ -262,6 +280,7 @@
                 <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80')">
                     <div><i class="fa-solid fa-language"></i><h2>خدمات الترجمة الأكاديمية</h2><p>ترجمة احترافية للأبحاث والرسائل العلمية - عربي ↔ إنجليزي</p></div>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="transForm">
                     <div class="form-card"><h4><span class="step-num">1</span> نوع الترجمة</h4>
                         <div class="fg2"><div class="fg"><label>اتجاه الترجمة <span class="req">*</span></label><select required><option value="">اختر...</option><option>من العربية إلى الإنجليزية</option><option>من الإنجليزية إلى العربية</option><option>ترجمة في الاتجاهين</option></select></div>
@@ -276,6 +295,7 @@
                     <div class="form-card"><h4><span class="step-num">3</span> الملفات</h4>
                         <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف المراد ترجمته</p><span>PDF, Word - الحد الأقصى 25MB</span><input type="file" accept=".pdf,.docx,.doc" hidden></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب الترجمة</button>
                 </form>
             </div>
@@ -285,6 +305,7 @@
                 <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80')">
                     <div><i class="fa-solid fa-chart-pie"></i><h2>خدمات التحليل الإحصائي</h2><p>تحليل احترافي للبيانات باستخدام SPSS, R, Python, AMOS</p></div>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="statsForm">
                     <div class="form-card"><h4><span class="step-num">1</span> معلومات الدراسة</h4>
                         <div class="fg"><label>نوع الدراسة <span class="req">*</span></label><select required><option value="">اختر...</option><option>دراسة كمية (استبيان / بيانات رقمية)</option><option>دراسة نوعية (مقابلات / تحليل محتوى)</option><option>دراسة مختلطة (كمي + نوعي)</option></select></div>
@@ -297,6 +318,7 @@
                     <div class="form-card"><h4><span class="step-num">3</span> الملفات</h4>
                         <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع ملف البيانات والاستبيان</p><span>Excel, CSV, SPSS (.sav), PDF</span><input type="file" multiple accept=".xlsx,.csv,.sav,.xls,.pdf" hidden></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب التحليل</button>
                 </form>
             </div>
@@ -306,6 +328,7 @@
                 <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80')">
                     <div><i class="fa-solid fa-check-double"></i><h2>خدمات فحص الاقتباس</h2><p>فحص دقيق لنسبة الاقتباس باستخدام Turnitin و iThenticate</p></div>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="plagForm">
                     <div class="form-card"><h4><span class="step-num">1</span> نوع الفحص</h4>
                         <div class="fg2"><div class="fg"><label>أداة الفحص <span class="req">*</span></label><select required><option value="">اختر...</option><option>Turnitin (للرسائل الجامعية)</option><option>iThenticate (للأبحاث العلمية)</option><option>الفحص بكلا الأداتين</option><option>أريد توصيتكم بالأداة المناسبة</option></select></div>
@@ -319,6 +342,7 @@
                     <div class="form-card"><h4><span class="step-num">3</span> رفع الملف</h4>
                         <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف المراد فحصه</p><span>PDF, Word - الحد الأقصى 30MB</span><input type="file" accept=".pdf,.docx,.doc" hidden></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب الفحص</button>
                 </form>
             </div>
@@ -328,6 +352,7 @@
                 <div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1523050854058-8df90910b683?w=1200&q=80')">
                     <div><i class="fa-solid fa-graduation-cap"></i><h2>خدمات مشاريع التخرج</h2><p>مساعدة متكاملة في مشاريع التخرج لجميع التخصصات</p></div>
                 </div>
+                <div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>خدمة فرعية</b><span>تفاصيل واضحة قبل الطلب.</span></div><div><i class="fa-solid fa-list-check"></i><b>متطلبات دقيقة</b><span>أسئلة وخيارات أكثر داخل النموذج.</span></div><div><i class="fa-solid fa-file-circle-check"></i><b>مخرجات جاهزة</b><span>ملفات قابلة للتسليم أو النشر.</span></div><div><i class="fa-solid fa-headset"></i><b>متابعة</b><span>طلب ومراسلات وإشعارات.</span></div></div>
                 <form class="svc-form" id="gradForm">
                     <div class="form-card"><h4><span class="step-num">1</span> معلومات المشروع</h4>
                         <div class="fg2"><div class="fg"><label>المرحلة الدراسية <span class="req">*</span></label><select required><option value="">اختر...</option><option>دبلوم</option><option>بكالوريوس</option><option>دبلوم عالي</option></select></div>
@@ -343,9 +368,16 @@
                         <div class="fg"><label>موعد التسليم</label><input type="date"></div></div>
                         <div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع أي ملفات متعلقة بالمشروع</p><span>متطلبات الجامعة، كود، تصميمات...</span><input type="file" multiple hidden></div>
                     </div>
+                    <div class="form-card"><h4><span class="step-num">+</span> خيارات وأسئلة إضافية</h4><div class="fg2"><div class="fg"><label>الأولوية</label><select><option>جودة وتفصيل</option><option>سرعة إنجاز</option><option>توازن بين السرعة والجودة</option></select></div><div class="fg"><label>هل توجد تعليمات خاصة؟</label><select><option>لا</option><option>نعم، سأكتبها هنا</option><option>نعم، مرفقة ضمن الملفات</option></select></div></div><div class="fg"><label>تفاصيل إضافية تساعد الفريق</label><textarea rows="3" placeholder="اكتب متطلبات المشرف، قالب الجامعة، عدد الصفحات، أو أي ملاحظات مهمة..."></textarea></div><div class="checks"><label><input type="checkbox"> أحتاج تقرير متابعة مختصر</label><label><input type="checkbox"> أحتاج ملف قابل للتعديل Word</label><label><input type="checkbox"> أحتاج عرض PowerPoint</label><label><input type="checkbox"> أحتاج مراجعة نهائية قبل التسليم</label></div></div>
                     <button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب المشروع</button>
                 </form>
             </div>
+
+
+            <div class="page" id="page-consulting"><div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80')"><div><i class="fa-solid fa-user-check"></i><h2>استشارات بحثية متخصصة</h2><p>جلسات لاختيار الموضوع والمنهج وخطة التنفيذ</p></div></div><div class="service-subgrid"><div><i class="fa-solid fa-lightbulb"></i><b>اختيار موضوع</b><span>عناوين قابلة للدراسة.</span></div><div><i class="fa-solid fa-question"></i><b>إشكالية وأسئلة</b><span>بناء مشكلة البحث.</span></div><div><i class="fa-solid fa-compass"></i><b>منهجية</b><span>مجتمع وعينة وأداة.</span></div><div><i class="fa-solid fa-route"></i><b>خطة تنفيذ</b><span>مراحل واضحة.</span></div></div><form class="svc-form" id="consultForm"><div class="form-card"><h4><span class="step-num">1</span> بيانات الاستشارة</h4><div class="fg2"><div class="fg"><label>نوع الاستشارة <span class="req">*</span></label><select required><option value="">اختر...</option><option>اختيار موضوع</option><option>تقييم عنوان</option><option>إشكالية وأسئلة</option><option>منهجية وأداة</option><option>خطة نشر</option></select></div><div class="fg"><label>التخصص <span class="req">*</span></label><select required class="spec-select-all"></select></div></div><div class="fg"><label>اشرح ما تحتاجه</label><textarea rows="4"></textarea></div></div><div class="form-card"><h4><span class="step-num">2</span> طريقة التواصل</h4><div class="fg2"><div class="fg"><label>مدة الجلسة</label><select><option>30 دقيقة</option><option>60 دقيقة</option><option>90 دقيقة</option></select></div><div class="fg"><label>موعد مناسب</label><input type="datetime-local"></div></div></div><button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب الاستشارة</button></form></div>
+            <div class="page" id="page-formatting"><div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&q=80')"><div><i class="fa-solid fa-pen-ruler"></i><h2>التنسيق والتدقيق الأكاديمي</h2><p>تدقيق لغة ومراجع وقوالب جامعات ومجلات</p></div></div><div class="service-subgrid"><div><i class="fa-solid fa-spell-check"></i><b>تدقيق لغوي</b><span>نحو وإملاء وصياغة.</span></div><div><i class="fa-solid fa-quote-right"></i><b>ضبط المراجع</b><span>APA/Vancouver/IEEE.</span></div><div><i class="fa-solid fa-table"></i><b>جداول وأشكال</b><span>تنسيق احترافي.</span></div><div><i class="fa-solid fa-file-word"></i><b>قالب رسمي</b><span>جامعة أو مجلة.</span></div></div><form class="svc-form" id="formatForm"><div class="form-card"><h4><span class="step-num">1</span> نوع الملف</h4><div class="fg2"><div class="fg"><label>نوع العمل <span class="req">*</span></label><select required><option value="">اختر...</option><option>رسالة</option><option>مقال</option><option>خطة بحث</option><option>عرض تقديمي</option></select></div><div class="fg"><label>نظام التوثيق</label><select><option>APA 7</option><option>Vancouver</option><option>IEEE</option><option>Harvard</option></select></div></div><div class="checks"><label><input type="checkbox" checked> تدقيق لغوي</label><label><input type="checkbox"> تنسيق الهوامش</label><label><input type="checkbox"> ضبط المراجع</label><label><input type="checkbox"> فهرسة</label></div><div class="file-box"><i class="fa-solid fa-cloud-arrow-up"></i><p>ارفع الملف</p><span>Word, PDF, PowerPoint</span><input type="file" multiple hidden></div></div><button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> تقديم طلب التنسيق</button></form></div>
+            <div class="page" id="page-training"><div class="pg-banner" style="background-image:url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=1200&q=80')"><div><i class="fa-solid fa-chalkboard-user"></i><h2>تدريب وورش أكاديمية</h2><p>ورش في المنهجية والنشر والتحليل</p></div></div><div class="service-subgrid"><div><i class="fa-solid fa-chart-pie"></i><b>SPSS وAMOS</b><span>تحليل وتفسير.</span></div><div><i class="fa-solid fa-book"></i><b>منهجية</b><span>خطة ورسالة.</span></div><div><i class="fa-solid fa-newspaper"></i><b>نشر علمي</b><span>اختيار مجلة.</span></div><div><i class="fa-solid fa-quote-right"></i><b>Zotero</b><span>إدارة مراجع.</span></div></div><form class="svc-form" id="trainingForm"><div class="form-card"><h4><span class="step-num">1</span> اختر البرنامج</h4><div class="fg2"><div class="fg"><label>موضوع الورشة <span class="req">*</span></label><select required><option value="">اختر...</option><option>إعداد خطة بحث</option><option>SPSS</option><option>AMOS / SmartPLS</option><option>النشر في Scopus</option><option>Zotero/Mendeley</option></select></div><div class="fg"><label>نوع التدريب</label><select><option>فردي</option><option>مجموعة صغيرة</option><option>جلسة مباشرة</option></select></div></div></div><button type="submit" class="btn-submit"><i class="fa-solid fa-paper-plane"></i> حجز تدريب</button></form></div>
+            <div class="page" id="page-tools"><h3 class="pg-title"><i class="fa-solid fa-toolbox"></i> أدوات الباحث</h3><p class="section-lead">أدوات سريعة ترفع جاهزية الطالب قبل الطلب.</p><div class="tools-grid"><div><i class="fa-solid fa-list-check"></i><h4>قائمة فحص خطة البحث</h4><p>تأكد من اكتمال العنوان والمشكلة والمنهجية والمراجع.</p><button onclick="showModal('قائمة فحص خطة البحث','<p>تحقق من وضوح المشكلة، قابلية الأسئلة للقياس، مناسبة المنهج، وحداثة المراجع.</p>')">فتح</button></div><div><i class="fa-solid fa-calculator"></i><h4>حاسبة الكلمات والمدة</h4><p>تقدير أولي للمدة حسب حجم العمل.</p><button onclick="showModal('حاسبة الكلمات والمدة','<p>أرسل عدد الكلمات داخل النموذج وسنقدر مدة مناسبة ضمن الطلب.</p>')">فتح</button></div><div><i class="fa-solid fa-quote-right"></i><h4>اختيار نظام التوثيق</h4><p>APA، Vancouver، IEEE، Harvard.</p><button onclick="goTo('formatting')">طلب ضبط المراجع</button></div><div><i class="fa-solid fa-newspaper"></i><h4>جاهزية المقال</h4><p>عنوان، ملخص، منهجية، نتائج، مراجع، قالب مجلة.</p><button onclick="goTo('publication')">ابدأ</button></div></div></div>
 
             <!-- ══════════ ORDERS ══════════ -->
             <div class="page" id="page-orders">
