@@ -1,0 +1,106 @@
+from pathlib import Path
+p=Path('/mnt/data/fixv6/js/app.js')
+s=p.read_text()
+# per-user order key helpers
+s=s.replace("const ST = {\n    user: null,\n    page: 'home',\n    history: ['home'],\n    orders: [],\n    notifs: []\n};", "const ST = {\n    user: null,\n    page: 'home',\n    history: ['home'],\n    orders: [],\n    notifs: []\n};\n\nfunction getUserStorageKey(base) {\n    const email = ST.user && ST.user.email ? String(ST.user.email).toLowerCase().replace(/[^a-z0-9._-]/g, '_') : 'guest';\n    return `${base}_${email}`;\n}")
+# checkUser orders global to per-user
+s=s.replace("    ST.orders = JSON.parse(localStorage.getItem('ahu_orders') || '[]');\n    ST.notifs = JSON.parse(localStorage.getItem('ahu_notifs') || '[]');", "    // الطلبات أصبحت مرتبطة بكل حساب على حدة؛ لا تظهر طلبات مستخدم آخر عند إنشاء حساب جديد.\n    ST.orders = JSON.parse(localStorage.getItem(getUserStorageKey('ahu_orders')) || '[]');\n    ST.notifs = JSON.parse(localStorage.getItem(getUserStorageKey('ahu_notifs')) || '[]');")
+# save orders per user
+s=s.replace("    localStorage.setItem('ahu_orders', JSON.stringify(ST.orders));", "    localStorage.setItem(getUserStorageKey('ahu_orders'), JSON.stringify(ST.orders));")
+# certificate modal remove content
+s=s.replace("<button onclick=\"showModal('${c.t}', '<p>سيتم عرض الشهادة هنا بعد رفع الصورة أو ملف PDF الخاص بها.</p>')\">عرض الشهادة</button>", "<button onclick=\"showModal('${c.t}', '')\">عرض الشهادة</button>")
+# showModal gracefully empty body
+s=s.replace("function showModal(title, content) {\n    document.getElementById('modalTitle').textContent = title;\n    document.getElementById('modalBody').innerHTML = content;\n    document.getElementById('modal').classList.add('show');\n}", "function showModal(title, content) {\n    document.getElementById('modalTitle').textContent = title;\n    const body = document.getElementById('modalBody');\n    body.innerHTML = content || '';\n    body.style.display = content ? 'block' : 'none';\n    document.getElementById('modal').classList.add('show');\n}")
+# modal close reset body display maybe not needed
+# add click ripple init in DOM sequence if missing
+s=s.replace("    initInteractiveMotion();", "    initInteractiveMotion();\n    initClickEffects();")
+# add function after initInteractiveMotion or at end
+if "function initClickEffects()" not in s:
+    s += r'''
+
+// ═══════════════ CLICK MICRO-INTERACTIONS ═══════════════
+function initClickEffects() {
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('button, .side-link, .svc-card, .mini-services-grid article, .f-btn, .package-card');
+        if (!target) return;
+        target.classList.remove('tap-animate');
+        void target.offsetWidth;
+        target.classList.add('tap-animate');
+        setTimeout(() => target.classList.remove('tap-animate'), 360);
+    });
+}
+'''
+p.write_text(s)
+
+# Patch dashboard images and logo class additions
+p=Path('/mnt/data/fixv6/dashboard.html')
+s=p.read_text()
+s=s.replace('<i class="fa-solid fa-graduation-cap"></i>', '<i class="fa-solid fa-graduation-cap logo-spin"></i>')
+s=s.replace("https://cdn-icons-png.flaticon.com/512/4248/4248443.png", "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&q=80")
+s=s.replace("https://cdn-icons-png.flaticon.com/512/3242/3242257.png", "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80")
+s=s.replace("https://cdn-icons-png.flaticon.com/512/3039/3039381.png", "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80")
+s=s.replace("https://cdn-icons-png.flaticon.com/512/1006/1006363.png", "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80")
+p.write_text(s)
+
+# Append CSS improvements
+p=Path('/mnt/data/fixv6/css/style.css')
+s=p.read_text()
+css = r'''
+
+/* Fix v6: per-page colors, real-service images, animated logo, smooth interactions */
+.logo-spin {
+  display:inline-flex;
+  animation: logoFloatSpin 3.2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 14px rgba(37,99,235,.32));
+}
+@keyframes logoFloatSpin {
+  0%,100% { transform: translateY(0) rotate(0deg) scale(1); }
+  35% { transform: translateY(-4px) rotate(-8deg) scale(1.08); }
+  70% { transform: translateY(2px) rotate(8deg) scale(1.02); }
+}
+
+/* صور الخدمات المصغرة أصبحت صوراً حقيقية بعرض كامل بدل أيقونات عامة */
+.mini-services-grid img {
+  width:100% !important;
+  height:132px !important;
+  object-fit:cover !important;
+  border-radius:18px;
+  margin-bottom:14px;
+  filter:saturate(1.06) contrast(1.02) drop-shadow(0 8px 12px rgba(15,23,42,.10));
+  transition:transform .45s ease, filter .35s ease;
+}
+.mini-services-grid article:hover img { transform:scale(1.045); filter:saturate(1.18) contrast(1.06); }
+
+/* لون مختلف لكل صفحة خدمة */
+#page-thesis .pg-banner:after { background:linear-gradient(135deg,rgba(37,99,235,.68),rgba(14,165,233,.44)); }
+#page-publication .pg-banner:after { background:linear-gradient(135deg,rgba(16,185,129,.68),rgba(37,99,235,.42)); }
+#page-translation .pg-banner:after { background:linear-gradient(135deg,rgba(124,58,237,.68),rgba(236,72,153,.36)); }
+#page-statistics .pg-banner:after { background:linear-gradient(135deg,rgba(245,158,11,.68),rgba(239,68,68,.36)); }
+#page-programming .pg-banner:after { background:linear-gradient(135deg,rgba(14,165,233,.70),rgba(99,102,241,.42)); }
+#page-simulation .pg-banner:after { background:linear-gradient(135deg,rgba(13,148,136,.72),rgba(59,130,246,.43)); }
+#page-promotion .pg-banner:after { background:linear-gradient(135deg,rgba(22,163,74,.72),rgba(245,158,11,.38)); }
+#page-consulting .pg-banner:after { background:linear-gradient(135deg,rgba(79,70,229,.70),rgba(20,184,166,.38)); }
+#page-formatting .pg-banner:after { background:linear-gradient(135deg,rgba(236,72,153,.65),rgba(124,58,237,.42)); }
+#page-training .pg-banner:after { background:linear-gradient(135deg,rgba(234,88,12,.67),rgba(37,99,235,.38)); }
+#page-tools .pg-banner:after { background:linear-gradient(135deg,rgba(2,132,199,.68),rgba(16,185,129,.40)); }
+
+/* تأثير ضغط واضح عند اختيار أي زر أو خدمة */
+.tap-animate { animation: tapPulse .34s ease both; }
+@keyframes tapPulse {
+  0% { transform:scale(1); }
+  45% { transform:scale(.965); box-shadow:0 0 0 8px rgba(37,99,235,.10); }
+  100% { transform:scale(1); }
+}
+button, .side-link, .svc-card, .mini-services-grid article, .f-btn, .package-card { will-change: transform; }
+
+/* تحسين سلاسة فتح الصفحات */
+.page { opacity:0; transform:translateY(12px); transition:opacity .35s ease, transform .35s ease; }
+.page.active { opacity:1; transform:translateY(0); }
+
+/* نافذة الشهادة: عند عدم وجود محتوى لا يظهر أي نص إضافي */
+#modalBody:empty { display:none !important; padding:0 !important; margin:0 !important; }
+.modal-box { overflow:hidden; }
+'''
+if 'Fix v6: per-page colors' not in s:
+    s += css
+p.write_text(s)
