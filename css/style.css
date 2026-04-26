@@ -1272,3 +1272,37 @@ input, select, textarea { font-family: inherit; font-size: 0.9rem; }
 .form-card{border:1px solid rgba(226,232,240,.95);background:linear-gradient(180deg,#fff,#fbfdff)}.fg input:focus,.fg select:focus,.fg textarea:focus,.input-group input:focus,.input-group select:focus{border-color:var(--student-2);box-shadow:0 0 0 4px rgba(124,58,237,.12)}.btn-submit,.auth-btn{background:linear-gradient(135deg,#2563EB,#7C3AED,#06B6D4);background-size:220% 220%;animation:gradientShift 5s ease infinite}.reveal-card{opacity:0;transform:translateY(24px) scale(.98);transition:opacity .55s ease var(--delay,0ms),transform .55s ease var(--delay,0ms)}.reveal-card.is-visible{opacity:1;transform:translateY(0) scale(1)}.page{animation:pageFade .36s ease}.auth-shape{animation:floatShape 9s ease-in-out infinite alternate}.auth-shape-2{animation-duration:12s}.auth-shape-3{animation-duration:15s}.checks label{transition:.25s}.checks label:hover{transform:translateX(-4px);background:rgba(37,99,235,.06);border-color:rgba(37,99,235,.2)}
 @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}@keyframes pageFade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}@keyframes floatShape{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(18px,-24px,0) scale(1.08)}}
 @media(max-width:1150px){.quick-sections-grid,.service-subgrid,.tools-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:640px){.quick-sections-grid,.service-subgrid,.tools-grid{grid-template-columns:1fr}.service-subgrid>div,.quick-sections-grid button,.tools-grid>div{padding:16px}}
+
+
+/* Upgrade v4: richer services, external images, smoother navigation */
+html { scroll-behavior: smooth; }
+.mini-services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin:22px 0 28px}
+.mini-services-grid article{background:linear-gradient(180deg,#fff,#f8fbff);border:1px solid rgba(226,232,240,.95);border-radius:24px;padding:22px;box-shadow:var(--sh);transition:.35s;position:relative;overflow:hidden}
+.mini-services-grid article:before{content:'';position:absolute;inset:auto -35% -45% auto;width:150px;height:150px;background:linear-gradient(135deg,rgba(37,99,235,.13),rgba(124,58,237,.14));border-radius:50%;transition:.4s}
+.mini-services-grid article:hover{transform:translateY(-8px);box-shadow:0 26px 60px rgba(37,99,235,.18);border-color:rgba(124,58,237,.28)}
+.mini-services-grid article:hover:before{transform:scale(1.35)}
+.mini-services-grid img{width:58px;height:58px;object-fit:contain;margin-bottom:14px;filter:drop-shadow(0 8px 12px rgba(15,23,42,.10))}
+.mini-services-grid h4{font-size:1.05rem;color:var(--g9);margin-bottom:8px}
+.mini-services-grid p{color:var(--g5);font-size:.9rem;line-height:1.8}
+#page-programming .pg-banner,#page-simulation .pg-banner,#page-promotion .pg-banner{position:relative;overflow:hidden}
+#page-programming .pg-banner:after,#page-simulation .pg-banner:after,#page-promotion .pg-banner:after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.58),rgba(124,58,237,.48),rgba(6,182,212,.42));pointer-events:none}
+#page-programming .pg-banner>div,#page-simulation .pg-banner>div,#page-promotion .pg-banner>div{position:relative;z-index:1}
+.svc-card img{transition:transform .55s ease,filter .35s ease}.svc-card:hover img{transform:scale(1.08);filter:saturate(1.15) contrast(1.03)}
+.page.active{animation:pageFade .42s ease both}.side-nav{scroll-behavior:smooth}.auth-msg.error{animation:shakeMsg .28s ease}
+@keyframes shakeMsg{0%,100%{transform:translateX(0)}30%{transform:translateX(6px)}60%{transform:translateX(-6px)}}
+@media(max-width:1150px){.mini-services-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.mini-services-grid{grid-template-columns:1fr}.mini-services-grid article{padding:18px}.pg-banner h2{font-size:1.55rem}}
+
+
+.exp-country {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  color: var(--primary);
+  background: rgba(59, 130, 246, .08);
+  border: 1px solid rgba(59, 130, 246, .14);
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin: 4px 0 6px;
+}
