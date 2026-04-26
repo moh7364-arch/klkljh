@@ -211,6 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initAllForms();
     initFileUploads();
     initModal();
+    initInteractiveMotion();
     loadOrdersPage();
     loadMessagesPage();
     initExpertsPage();
@@ -364,6 +365,7 @@ function goTo(page, fromBack = false) {
     if (page === 'forum') loadForumGrid();
     if (page === 'messages') loadMessagesPage();
     if (page === 'home') loadHomeStats();
+    animateVisibleCards();
     updateBackButton();
 }
 
@@ -560,7 +562,10 @@ function initAllForms() {
         { id: 'transForm', name: 'خدمة الترجمة الأكاديمية' },
         { id: 'statsForm', name: 'خدمة التحليل الإحصائي' },
         { id: 'plagForm', name: 'خدمة فحص الاقتباس' },
-        { id: 'gradForm', name: 'خدمة مشاريع التخرج' }
+        { id: 'gradForm', name: 'خدمة مشاريع التخرج' },
+        { id: 'consultForm', name: 'خدمة الاستشارات البحثية' },
+        { id: 'formatForm', name: 'خدمة التنسيق والتدقيق' },
+        { id: 'trainingForm', name: 'خدمة التدريب الأكاديمي' }
     ];
     forms.forEach(({ id, name }) => {
         const f = document.getElementById(id);
@@ -791,3 +796,27 @@ console.log('📱 WhatsApp: https://chat.whatsapp.com/DO6CyC5MwajLizwHNkmLHU?mod
 console.log('👥 Experts:', EXPERTS_DATA.length);
 console.log('📚 Library:', LIBRARY_DATA.length);
 console.log('💬 Forum:', FORUM_DATA.length);
+
+// INTERACTIVE MOTION UPGRADE
+function initInteractiveMotion(){
+    document.querySelectorAll('.svc-card,.form-card,.service-subgrid>div,.quick-sections-grid button,.tools-grid>div,.feature-pro-card').forEach((el,i)=>{
+        el.classList.add('reveal-card');
+        el.style.setProperty('--delay',(i%8)*60+'ms');
+    });
+    animateVisibleCards();
+    const s=document.getElementById('pageContainer');
+    if(s) s.addEventListener('scroll',animateVisibleCards,{passive:true});
+    document.addEventListener('mousemove',e=>{
+        const c=e.target.closest('.svc-card,.package-card,.tools-grid>div');
+        if(!c) return;
+        const r=c.getBoundingClientRect();
+        c.style.setProperty('--mx',((e.clientX-r.left)/r.width*100).toFixed(0)+'%');
+        c.style.setProperty('--my',((e.clientY-r.top)/r.height*100).toFixed(0)+'%');
+    });
+}
+function animateVisibleCards(){
+    document.querySelectorAll('.reveal-card').forEach(el=>{
+        const r=el.getBoundingClientRect();
+        if(r.top<(window.innerHeight||800)-40) el.classList.add('is-visible');
+    });
+}
