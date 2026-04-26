@@ -52,6 +52,7 @@
         
         <!-- TOPBAR -->
         <header class="topbar">
+            <button class="back-btn" id="backBtn" title="رجوع"><i class="fa-solid fa-arrow-right"></i><span>رجوع</span></button>
             <button class="menu-btn" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
             <div class="topbar-center">
                 <div class="topbar-scroll">
@@ -146,6 +147,44 @@
                     <div><i class="fa-solid fa-language"></i><b>صياغة أكاديمية</b><span>لغة علمية عربية وإنجليزية</span></div>
                     <div><i class="fa-solid fa-chart-line"></i><b>متابعة الطلب</b><span>حالة كل خدمة داخل لوحة التحكم</span></div>
                 </div>
+
+
+
+                <h3 class="sec-title"><i class="fa-solid fa-briefcase"></i> نماذج من الأعمال السابقة</h3>
+                <p class="section-lead">مجموعة عناوين ومجالات بحثية تظهر للزائر تنوع الأعمال التي يمكن تنفيذها أو تطويرها داخل المنصة.</p>
+                <div class="works-grid" id="previousWorksGrid"></div>
+                <div class="portfolio-actions">
+                    <button class="f-btn active" data-work-filter="all">كل الأعمال</button>
+                    <button class="f-btn" data-work-filter="publication">نشر علمي</button>
+                    <button class="f-btn" data-work-filter="translation">ترجمة</button>
+                    <button class="f-btn" data-work-filter="thesis">رسائل</button>
+                    <button class="f-btn" data-work-filter="stats">تحليل إحصائي</button>
+                </div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-award"></i> شهادات نشر ومشاركة وترجمة</h3>
+                <p class="section-lead">قسم مخصص لعرض نماذج شهادات الإنجاز السابقة، ويمكن استبدالها لاحقاً بصور أو ملفات حقيقية.</p>
+                <div class="cert-grid" id="certificatesGrid"></div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-wand-magic-sparkles"></i> مميزات إضافية داخل المنصة</h3>
+                <div class="features-pro-grid" id="featuresProGrid"></div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-route"></i> طريقة العمل</h3>
+                <div class="workflow-grid">
+                    <div><span>01</span><b>استلام الطلب</b><p>إرسال تفاصيل الخدمة والملفات المطلوبة من داخل النموذج.</p></div>
+                    <div><span>02</span><b>تقييم أكاديمي</b><p>تحديد نطاق العمل والمدة والتخصص المناسب قبل التنفيذ.</p></div>
+                    <div><span>03</span><b>تنفيذ ومراجعة</b><p>إنجاز العمل مع مراجعة لغوية ومنهجية وتنسيقية.</p></div>
+                    <div><span>04</span><b>تسليم ومتابعة</b><p>تسليم النسخة النهائية ومتابعة أي تعديلات مرتبطة بالطلب.</p></div>
+                </div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-box-open"></i> باقات الخدمات</h3>
+                <div class="packages-grid">
+                    <div class="package-card"><i class="fa-solid fa-seedling"></i><h4>باقة البداية</h4><p>اختيار موضوع، خطة بحث، ومراجع أولية.</p><button onclick="goTo('thesis')">اطلب الباقة</button></div>
+                    <div class="package-card featured"><i class="fa-solid fa-crown"></i><h4>الباقة المتقدمة</h4><p>كتابة أكاديمية، تحليل، توثيق، وتنسيق كامل.</p><button onclick="goTo('thesis')">اطلب الباقة</button></div>
+                    <div class="package-card"><i class="fa-solid fa-globe"></i><h4>باقة النشر</h4><p>تهيئة المقال، اختيار مجلة، Cover Letter، وردود محكمين.</p><button onclick="goTo('publication')">اطلب الباقة</button></div>
+                </div>
+
+                <h3 class="sec-title"><i class="fa-solid fa-star-half-stroke"></i> آراء العملاء</h3>
+                <div class="reviews-grid" id="reviewsGrid"></div>
 
                 <h3 class="sec-title"><i class="fa-solid fa-microscope"></i> جميع التخصصات والفروع</h3>
                 <div class="specs-grid" id="specsGrid"></div>
@@ -352,5 +391,6 @@
     <div class="modal" id="modal"><div class="modal-bg"></div><div class="modal-box"><div class="modal-head"><h4 id="modalTitle"></h4><button class="modal-x">&times;</button></div><div class="modal-body" id="modalBody"></div></div></div>
 
     <script src="js/app.js"></script>
+    <script type="module" src="js/firebase-public.js"></script>
 </body>
                                                                               </html>
