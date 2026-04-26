@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>لوحة المشرف | AcademiaHub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <section class="admin-login" id="loginBox">
+      <div class="admin-card narrow">
+        <i class="fa-solid fa-user-shield admin-big-icon"></i>
+        <h1>لوحة المشرف المخفية</h1>
+        <p>هذه الصفحة لا تظهر داخل المنصة، ويتم الدخول إليها من الرابط الخاص فقط.</p>
+        <form id="adminLoginForm" class="admin-form">
+          <label>بريد المشرف</label>
+          <input type="email" id="adminEmail" placeholder="admin@example.com" required>
+          <label>كلمة المرور</label>
+          <input type="password" id="adminPassword" value="Kaleem7364@" required>
+          <button type="submit"><i class="fa-solid fa-lock-open"></i> دخول المشرف</button>
+        </form>
+        <div class="admin-alert" id="loginMsg"></div>
+        <p class="admin-note">قبل التشغيل: عدّل ملف <b>js/firebase-config.js</b> وضع بيانات مشروع Firebase وبريد المشرف.</p>
+      </div>
+    </section>
+
+    <section class="admin-panel hidden" id="adminPanel">
+      <header class="admin-topbar">
+        <div>
+          <h1><i class="fa-solid fa-screwdriver-wrench"></i> لوحة التحكم</h1>
+          <p>إضافة وحذف الأعمال، الشهادات، الخدمات، المميزات، وآراء العملاء.</p>
+        </div>
+        <div class="admin-actions">
+          <a href="dashboard.html" target="_blank">فتح المنصة</a>
+          <button id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> خروج</button>
+        </div>
+      </header>
+
+      <nav class="admin-tabs">
+        <button class="active" data-admin-tab="works">الأعمال السابقة</button>
+        <button data-admin-tab="certificates">الشهادات</button>
+        <button data-admin-tab="services">الخدمات</button>
+        <button data-admin-tab="features">المميزات</button>
+        <button data-admin-tab="reviews">آراء العملاء</button>
+      </nav>
+
+      <section class="admin-section active" id="tab-works">
+        <div class="admin-grid-two">
+          <form class="admin-card admin-form" data-collection="previousWorks">
+            <h2>إضافة عمل سابق</h2>
+            <input name="title" placeholder="عنوان العمل" required>
+            <input name="field" placeholder="المجال / التخصص" required>
+            <select name="category" required>
+              <option value="publication">نشر علمي</option>
+              <option value="translation">ترجمة</option>
+              <option value="thesis">رسائل جامعية</option>
+              <option value="stats">تحليل إحصائي</option>
+              <option value="other">أخرى</option>
+            </select>
+            <input name="tag" placeholder="وسم مختصر مثال: Scopus / ماجستير">
+            <label>ملف اختياري</label>
+            <input type="file" name="file">
+            <button type="submit">حفظ العمل</button>
+          </form>
+          <div class="admin-card"><h2>الأعمال الحالية</h2><div class="admin-list" data-list="previousWorks"></div></div>
+        </div>
+      </section>
+
+      <section class="admin-section" id="tab-certificates">
+        <div class="admin-grid-two">
+          <form class="admin-card admin-form" data-collection="certificates">
+            <h2>إضافة شهادة</h2>
+            <input name="title" placeholder="عنوان الشهادة" required>
+            <textarea name="description" placeholder="وصف الشهادة" required></textarea>
+            <input name="tag" placeholder="نوع الشهادة: نشر / ترجمة / مشاركة">
+            <input name="icon" placeholder="أيقونة FontAwesome مثال: fa-award">
+            <label>صورة الشهادة</label>
+            <input type="file" name="image" accept="image/*">
+            <label>ملف PDF اختياري</label>
+            <input type="file" name="file">
+            <button type="submit">حفظ الشهادة</button>
+          </form>
+          <div class="admin-card"><h2>الشهادات الحالية</h2><div class="admin-list" data-list="certificates"></div></div>
+        </div>
+      </section>
+
+      <section class="admin-section" id="tab-services">
+        <div class="admin-grid-two">
+          <form class="admin-card admin-form" data-collection="customServices">
+            <h2>إضافة خدمة</h2>
+            <input name="title" placeholder="عنوان الخدمة" required>
+            <textarea name="description" placeholder="وصف الخدمة" required></textarea>
+            <input name="icon" placeholder="أيقونة مثال: fa-book-open">
+            <select name="targetPage">
+              <option value="thesis">خدمات الرسائل</option>
+              <option value="publication">النشر الدولي</option>
+              <option value="translation">الترجمة</option>
+              <option value="stats">التحليل الإحصائي</option>
+              <option value="library">المكتبة</option>
+            </select>
+            <label>صورة اختيارية</label>
+            <input type="file" name="image" accept="image/*">
+            <button type="submit">حفظ الخدمة</button>
+          </form>
+          <div class="admin-card"><h2>الخدمات الحالية</h2><div class="admin-list" data-list="customServices"></div></div>
+        </div>
+      </section>
+
+      <section class="admin-section" id="tab-features">
+        <div class="admin-grid-two">
+          <form class="admin-card admin-form" data-collection="features">
+            <h2>إضافة ميزة</h2>
+            <input name="title" placeholder="عنوان الميزة" required>
+            <textarea name="description" placeholder="وصف الميزة" required></textarea>
+            <input name="icon" placeholder="أيقونة مثال: fa-circle-check">
+            <button type="submit">حفظ الميزة</button>
+          </form>
+          <div class="admin-card"><h2>المميزات الحالية</h2><div class="admin-list" data-list="features"></div></div>
+        </div>
+      </section>
+
+      <section class="admin-section" id="tab-reviews">
+        <div class="admin-grid-two">
+          <form class="admin-card admin-form" data-collection="reviews">
+            <h2>إضافة رأي عميل</h2>
+            <input name="name" placeholder="اسم/صفة العميل" required>
+            <textarea name="text" placeholder="نص الرأي" required></textarea>
+            <button type="submit">حفظ الرأي</button>
+          </form>
+          <div class="admin-card"><h2>الآراء الحالية</h2><div class="admin-list" data-list="reviews"></div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="js/admin-firebase.js"></script>
+</body>
+</html>
