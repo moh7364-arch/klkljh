@@ -110,10 +110,84 @@ function imgFallback(img, label) {
     }
 }
 
+
+const PREVIOUS_WORKS_DATA = [
+    { t: 'أثر الذكاء الاصطناعي في تحسين جودة التعليم الجامعي', c: 'تقنيات التعليم', tag: 'ماجستير' },
+    { t: 'دور القيادة التحويلية في رفع أداء المؤسسات الخدمية', c: 'إدارة أعمال', tag: 'دكتوراه' },
+    { t: 'تحليل اتجاهات النشر العلمي العربي في قواعد Scopus', c: 'نشر علمي', tag: 'مقال' },
+    { t: 'فاعلية التدخلات التمريضية في خفض قلق المرضى قبل العمليات', c: 'تمريض', tag: 'بحث طبي' },
+    { t: 'أثر التسويق الرقمي في ولاء العملاء لدى المؤسسات الناشئة', c: 'تسويق', tag: 'رسالة' },
+    { t: 'المسؤولية المدنية عن أخطاء الذكاء الاصطناعي', c: 'قانون', tag: 'مقال قانوني' },
+    { t: 'العلاقة بين جودة الحياة الوظيفية والاحتراق المهني', c: 'علم نفس تنظيمي', tag: 'تحليل SPSS' },
+    { t: 'استخدام نماذج الانحدار في التنبؤ بالطلب على الخدمات الصحية', c: 'إحصاء تطبيقي', tag: 'تحليل بيانات' },
+    { t: 'دور الحوكمة في الحد من الفساد الإداري', c: 'إدارة عامة', tag: 'دراسة ميدانية' },
+    { t: 'أثر تطبيق معايير الجودة الشاملة في الجامعات الخاصة', c: 'جودة تعليم', tag: 'بحث' },
+    { t: 'تحليل خطاب وسائل الإعلام الرقمية أثناء الأزمات', c: 'إعلام واتصال', tag: 'مقال' },
+    { t: 'الحماية القانونية للبيانات الشخصية في البيئة الرقمية', c: 'قانون رقمي', tag: 'بحث محكم' },
+    { t: 'دور رأس المال الفكري في تعزيز الابتكار المؤسسي', c: 'إدارة معرفة', tag: 'رسالة' },
+    { t: 'أثر استخدام الطاقة المتجددة في خفض تكاليف الإنتاج', c: 'هندسة/اقتصاد', tag: 'دراسة' },
+    { t: 'تحسين كفاءة الخوارزميات في تصنيف النصوص العربية', c: 'ذكاء اصطناعي', tag: 'بحث تقني' },
+    { t: 'العوامل المؤثرة في قبول التعليم الإلكتروني لدى طلبة الجامعات', c: 'تربية', tag: 'استبيان' },
+    { t: 'تحليل المخاطر المالية في المشروعات الصغيرة والمتوسطة', c: 'تمويل', tag: 'تحليل مالي' },
+    { t: 'دور العلاج الطبيعي في تحسين جودة حياة مرضى آلام الظهر', c: 'علوم صحية', tag: 'بحث طبي' },
+    { t: 'أثر العدالة التنظيمية في الرضا الوظيفي', c: 'موارد بشرية', tag: 'رسالة' },
+    { t: 'التحكيم التجاري الدولي وتسوية منازعات الاستثمار', c: 'قانون تجاري', tag: 'مقال قانوني' },
+    { t: 'تقييم جودة الخدمات المصرفية الإلكترونية', c: 'مصارف', tag: 'دراسة ميدانية' },
+    { t: 'استخدام نظم المعلومات الجغرافية في التخطيط الحضري', c: 'جغرافيا/تخطيط', tag: 'بحث تطبيقي' },
+    { t: 'دور الأسرة في تنمية القيم الاجتماعية لدى الشباب', c: 'علم اجتماع', tag: 'بحث اجتماعي' },
+    { t: 'تأثير الثقافة التنظيمية في إدارة التغيير', c: 'إدارة', tag: 'ماجستير' },
+    { t: 'تحليل محتوى المناهج الدراسية في ضوء مهارات القرن الحادي والعشرين', c: 'مناهج وطرق تدريس', tag: 'تحليل محتوى' },
+    { t: 'فاعلية برامج الأمن السيبراني في تقليل مخاطر الاختراق', c: 'أمن سيبراني', tag: 'بحث تقني' },
+    { t: 'أثر جودة الإفصاح المحاسبي في قرارات المستثمرين', c: 'محاسبة', tag: 'بحث' },
+    { t: 'دور الترجمة الأكاديمية في رفع فرص قبول المقالات دولياً', c: 'ترجمة', tag: 'مقال' },
+    { t: 'تقييم جودة المجلات المحلية وآليات اختيار مجلة مناسبة للنشر', c: 'نشر محلي', tag: 'دليل نشر' },
+    { t: 'تصميم خطة بحث متكاملة حول ريادة الأعمال الجامعية', c: 'ريادة أعمال', tag: 'خطة بحث' },
+    { t: 'مراجعة منهجية لرسالة ماجستير في القانون الإداري', c: 'قانون إداري', tag: 'تدقيق رسالة' },
+    { t: 'ترجمة مقال طبي حول جودة الرعاية الصحية', c: 'ترجمة طبية', tag: 'ترجمة' },
+    { t: 'إعداد Cover Letter لمجلة دولية في الإدارة', c: 'نشر علمي', tag: 'Cover Letter' },
+    { t: 'تصميم استبيان حول الرضا الوظيفي', c: 'موارد بشرية', tag: 'أداة بحث' },
+    { t: 'تحليل بيانات AMOS لنموذج وساطة إحصائية', c: 'تحليل إحصائي', tag: 'AMOS' },
+    { t: 'تنسيق مقال وفق متطلبات مجلة محلية جزائرية', c: 'ASJP', tag: 'نشر محلي' },
+    { t: 'تهيئة مقال للنشر عبر بوابة المجلات العراقية', c: 'IASJ', tag: 'نشر محلي' },
+    { t: 'إعداد ردود تفصيلية على ملاحظات محكمين', c: 'نشر دولي', tag: 'رد محكمين' },
+    { t: 'تحويل رسالة جامعية إلى مقال قابل للنشر', c: 'اختصار أكاديمي', tag: 'مقال' },
+    { t: 'تحرير مراجع وفق نظام Vancouver', c: 'توثيق طبي', tag: 'مراجع' },
+    { t: 'إعداد عرض مناقشة دكتوراه', c: 'PowerPoint أكاديمي', tag: 'عرض' },
+    { t: 'كتابة ملخص عربي وإنجليزي لبحث قانوني', c: 'صياغة أكاديمية', tag: 'ملخص' }
+];
+
+
+const CERTIFICATES_DATA = [
+    { t: 'شهادة نشر دولي', d: 'نموذج شهادة قبول مقال في مجلة مفهرسة', icon: 'fa-newspaper', tag: 'نشر' },
+    { t: 'شهادة مشاركة في مؤتمر', d: 'نموذج مشاركة ببحث علمي في مؤتمر دولي', icon: 'fa-users-viewfinder', tag: 'مؤتمر' },
+    { t: 'شهادة ترجمة أكاديمية', d: 'نموذج إنجاز ترجمة بحث عربي/إنجليزي', icon: 'fa-language', tag: 'ترجمة' },
+    { t: 'شهادة مراجعة لغوية', d: 'نموذج تدقيق لغوي وتحرير أكاديمي', icon: 'fa-spell-check', tag: 'تدقيق' },
+    { t: 'شهادة فحص اقتباس', d: 'نموذج تقرير أصالة وفحص تشابه', icon: 'fa-shield-halved', tag: 'أصالة' },
+    { t: 'شهادة تنسيق مجلة', d: 'نموذج تهيئة مقال حسب دليل المؤلفين', icon: 'fa-file-circle-check', tag: 'تنسيق' },
+    { t: 'شهادة مشاركة في النشر', d: 'نموذج تعاون بحثي ومتابعة نشر', icon: 'fa-handshake-angle', tag: 'تعاون' },
+    { t: 'شهادة تحرير مراجع', d: 'نموذج ضبط APA/Vancouver/IEEE', icon: 'fa-list-check', tag: 'مراجع' }
+];
+const FEATURES_PRO_DATA = [
+    { t: 'متابعة حالة الطلب', d: 'عرض الطلبات النشطة والمكتملة مع إشعارات داخلية.', icon: 'fa-list-check' },
+    { t: 'رفع ملفات متعددة', d: 'إرفاق خطة، مقال، مراجع، أو متطلبات الجامعة.', icon: 'fa-cloud-arrow-up' },
+    { t: 'اختيار النظام التوثيقي', d: 'APA 7، Vancouver، Harvard، Chicago، IEEE.', icon: 'fa-quote-right' },
+    { t: 'خطة نشر مخصصة', d: 'اقتراح بوابات ومجلات مناسبة حسب الدولة والتخصص.', icon: 'fa-bullseye' },
+    { t: 'قوالب أكاديمية جاهزة', d: 'مكتبة نماذج للخطط، العروض، الردود، والاستبيانات.', icon: 'fa-book-open' },
+    { t: 'مراسلة داخلية', d: 'واجهة محادثات لربط كل طلب بالمراسلات الخاصة به.', icon: 'fa-comments' },
+    { t: 'مجتمع أكاديمي', d: 'أقسام نقاش حول النشر والتحليل والمنح والمؤتمرات.', icon: 'fa-users' },
+    { t: 'بوابات عربية ومحلية', d: 'روابط للجزائر، العراق، ليبيا، الأردن، والمغرب.', icon: 'fa-globe' }
+];
+const REVIEWS_DATA = [
+    { n: 'باحث دكتوراه', r: 'خدمة منظمة وواضحة، خصوصاً في إعداد خطة النشر والرد على ملاحظات المحكمين.' },
+    { n: 'طالبة ماجستير', r: 'استفدت من ترتيب الفصول والتوثيق، وكانت المتابعة داخل المنصة سهلة.' },
+    { n: 'باحث مستقل', r: 'الترجمة الأكاديمية حسّنت جودة المقال وساعدتني في تهيئته للتقديم.' }
+];
+
 // ═══════════════ STATE ═══════════════
 const ST = {
     user: null,
     page: 'home',
+    history: ['home'],
     orders: [],
     notifs: []
 };
@@ -125,9 +199,12 @@ document.addEventListener('DOMContentLoaded', () => {
     loadUserData();
     initSidebar();
     initNavigation();
+    initBackButton();
     initTopbar();
     fillAllSpecSelects();
     loadSpecsGrid();
+    loadPreviousWorksGrid();
+    initHomeEnhancements();
     loadHomeStats();
     renderJournalPortals();
     initLogoFallbacks();
@@ -248,7 +325,31 @@ function initNavigation() {
     });
 }
 
-function goTo(page) {
+
+function initBackButton() {
+    const btn = document.getElementById('backBtn');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        if (ST.history.length > 1) {
+            ST.history.pop();
+            goTo(ST.history[ST.history.length - 1], true);
+        } else {
+            goTo('home', true);
+        }
+    });
+    updateBackButton();
+}
+
+function updateBackButton() {
+    const btn = document.getElementById('backBtn');
+    if (!btn) return;
+    const canBack = ST.page !== 'home' || ST.history.length > 1;
+    btn.classList.toggle('is-disabled', !canBack);
+}
+
+function goTo(page, fromBack = false) {
+    if (!fromBack && ST.page !== page) ST.history.push(page);
+    if (ST.history.length > 20) ST.history = ST.history.slice(-20);
     ST.page = page;
     document.querySelectorAll('.side-link').forEach(l => l.classList.remove('active'));
     const link = document.querySelector(`.side-link[data-page="${page}"]`);
@@ -263,7 +364,9 @@ function goTo(page) {
     if (page === 'forum') loadForumGrid();
     if (page === 'messages') loadMessagesPage();
     if (page === 'home') loadHomeStats();
+    updateBackButton();
 }
+
 
 // ═══════════════ TOPBAR ═══════════════
 function initTopbar() {
@@ -333,6 +436,76 @@ function loadSpecsGrid() {
                 </div>
             </div>
         </div>
+    `).join('');
+}
+
+
+function getWorkCategory(w) {
+    const text = (w.t + ' ' + w.c + ' ' + w.tag).toLowerCase();
+    if (/ترجم|translation|لغة/.test(text)) return 'translation';
+    if (/نشر|scopus|مجلة|محكم|مقال|cover/.test(text)) return 'publication';
+    if (/تحليل|spss|إحصاء|بيانات|انحدار|amos/.test(text)) return 'stats';
+    if (/رسالة|ماجستير|دكتوراه|خطة بحث/.test(text)) return 'thesis';
+    return 'other';
+}
+
+function loadPreviousWorksGrid(filter = 'all') {
+    const grid = document.getElementById('previousWorksGrid');
+    if (!grid) return;
+    const data = filter === 'all' ? PREVIOUS_WORKS_DATA : PREVIOUS_WORKS_DATA.filter(w => getWorkCategory(w) === filter);
+    grid.innerHTML = data.map((w, i) => `
+        <article class="work-card" data-work-category="${getWorkCategory(w)}">
+            <div class="work-num">${String(i + 1).padStart(2, '0')}</div>
+            <div class="work-content">
+                <span class="work-tag">${w.tag}</span>
+                <h4>${w.t}</h4>
+                <p><i class="fa-solid fa-folder-open"></i> ${w.c}</p>
+            </div>
+            <button class="work-btn" onclick="goTo('thesis')">طلب مشابه</button>
+        </article>
+    `).join('');
+}
+
+function initHomeEnhancements() {
+    document.querySelectorAll('[data-work-filter]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('[data-work-filter]').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            loadPreviousWorksGrid(this.dataset.workFilter);
+        });
+    });
+    renderCertificatesGrid();
+    renderFeaturesProGrid();
+    renderReviewsGrid();
+}
+
+function renderCertificatesGrid() {
+    const grid = document.getElementById('certificatesGrid');
+    if (!grid) return;
+    grid.innerHTML = CERTIFICATES_DATA.map((c, i) => `
+        <article class="cert-card">
+            <div class="cert-preview"><i class="fa-solid ${c.icon}"></i><span>AH-${String(i + 1).padStart(3, '0')}</span></div>
+            <span class="cert-tag">${c.tag}</span>
+            <h4>${c.t}</h4>
+            <p>${c.d}</p>
+            <button onclick="showModal('${c.t}', '<p>${c.d}</p><p>هذا مكان مخصص لعرض صورة الشهادة أو ملف PDF عند إضافته للمشروع.</p>')">عرض الشهادة</button>
+        </article>
+    `).join('');
+}
+
+function renderFeaturesProGrid() {
+    const grid = document.getElementById('featuresProGrid');
+    if (!grid) return;
+    grid.innerHTML = FEATURES_PRO_DATA.map(f => `
+        <div class="feature-pro-card"><i class="fa-solid ${f.icon}"></i><h4>${f.t}</h4><p>${f.d}</p></div>
+    `).join('');
+}
+
+function renderReviewsGrid() {
+    const grid = document.getElementById('reviewsGrid');
+    if (!grid) return;
+    grid.innerHTML = REVIEWS_DATA.map(r => `
+        <div class="review-card"><div class="stars">★★★★★</div><p>${r.r}</p><b>${r.n}</b></div>
     `).join('');
 }
 
