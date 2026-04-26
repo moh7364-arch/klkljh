@@ -202,6 +202,11 @@ const ST = {
     notifs: []
 };
 
+function getUserStorageKey(base) {
+    const email = ST.user && ST.user.email ? String(ST.user.email).toLowerCase().replace(/[^a-z0-9._-]/g, '_') : 'guest';
+    return base + '_' + email;
+}
+
 // ═══════════════ INIT ═══════════════
 document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.auth-body')) { initAuth(); return; }
@@ -222,6 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFileUploads();
     initModal();
     initInteractiveMotion();
+    initClickEffects();
     loadOrdersPage();
     loadMessagesPage();
     initExpertsPage();
@@ -295,8 +301,9 @@ function checkUser() {
         ST.user = JSON.parse(raw);
         if (!ST.user.isLoggedIn) location.href = 'index.html';
     } catch(e) { location.href = 'index.html'; }
-    ST.orders = JSON.parse(localStorage.getItem('ahu_orders') || '[]');
-    ST.notifs = JSON.parse(localStorage.getItem('ahu_notifs') || '[]');
+    // الطلبات أصبحت مرتبطة بكل حساب على حدة؛ لا تظهر طلبات مستخدم آخر عند إنشاء حساب جديد.
+    ST.orders = JSON.parse(localStorage.getItem(getUserStorageKey('ahu_orders')) || '[]');
+    ST.notifs = JSON.parse(localStorage.getItem(getUserStorageKey('ahu_notifs')) || '[]');
 }
 
 function loadUserData() {
@@ -509,7 +516,7 @@ function renderCertificatesGrid() {
             <span class="cert-tag">${c.tag}</span>
             <h4>${c.t}</h4>
             <p>${c.d}</p>
-            <button onclick="showModal('${c.t}', '<p>سيتم عرض الشهادة هنا بعد رفع الصورة أو ملف PDF الخاص بها.</p>')">عرض الشهادة</button>
+            <button onclick="showModal('${c.t}', '')">عرض الشهادة</button>
         </article>
     `).join('');
 }
@@ -615,7 +622,7 @@ function submitForm(form, serviceName) {
         service: serviceName
     });
     if (ST.orders.length > 100) ST.orders = ST.orders.slice(0, 100);
-    localStorage.setItem('ahu_orders', JSON.stringify(ST.orders));
+    localStorage.setItem(getUserStorageKey('ahu_orders'), JSON.stringify(ST.orders));
 
     sendToEmail(data, serviceName);
     addNotification('success', `تم تقديم ${serviceName} بنجاح! رقم الطلب: ${data.id}`, 'fa-circle-check', '#10B981');
@@ -804,7 +811,9 @@ function initModal() {
 
 function showModal(title, content) {
     document.getElementById('modalTitle').textContent = title;
-    document.getElementById('modalBody').innerHTML = content;
+    const body = document.getElementById('modalBody');
+    body.innerHTML = content || '';
+    body.style.display = content ? 'block' : 'none';
     document.getElementById('modal').classList.add('show');
 }
 
@@ -841,5 +850,17 @@ function animateVisibleCards(){
     document.querySelectorAll('.reveal-card').forEach(el=>{
         const r=el.getBoundingClientRect();
         if(r.top<(window.innerHeight||800)-40) el.classList.add('is-visible');
+    });
+}
+
+// ═══════════════ CLICK MICRO-INTERACTIONS ═══════════════
+function initClickEffects() {
+    document.addEventListener('click', function(e) {
+        const target = e.target.closest('button, .side-link, .svc-card, .mini-services-grid article, .f-btn, .package-card');
+        if (!target) return;
+        target.classList.remove('tap-animate');
+        void target.offsetWidth;
+        target.classList.add('tap-animate');
+        setTimeout(() => target.classList.remove('tap-animate'), 360);
     });
 }
